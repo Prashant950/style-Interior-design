@@ -111,32 +111,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0b0c0e] text-[#f4f4f0] font-sans antialiased selection:bg-[#c5a059] selection:text-black">
-      {/* Developer & Admin Quick Utility Strip */}
-      <div className="bg-[#121418] border-b border-white/10 px-4 py-1.5 flex items-center justify-between text-[11px] text-neutral-400">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="font-mono text-neutral-300">Style Well DYD (स्टाइल वेल डाइड) · Live Studio Engine</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setAdminOpen(true)}
-            className="hover:text-[#c5a059] flex items-center gap-1 font-mono transition-colors cursor-pointer"
-          >
-            <Shield className="w-3 h-3 text-[#c5a059]" />
-            <span>Admin Console</span>
-          </button>
-          <span className="text-neutral-600">|</span>
-          <button
-            onClick={handleDownloadZip}
-            className="hover:text-white flex items-center gap-1 font-mono text-[#c5a059] transition-colors cursor-pointer"
-            title="Download full client/ and server/ package (.zip)"
-          >
-            <Download className="w-3 h-3" />
-            <span>Download Project ZIP</span>
-          </button>
-        </div>
-      </div>
-
       {/* Main Navbar */}
       <Navbar
         settings={settings}
