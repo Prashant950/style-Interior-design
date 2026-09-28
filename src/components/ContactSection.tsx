@@ -12,17 +12,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   onOpenEnquiry
 }) => {
   return (
-    <section id="contact" className="py-24 bg-[#0e1014] relative border-t border-white/5">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-[#0e1014] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-2 sm:mb-3">
             <MapPin className="w-3.5 h-3.5" />
             <span>Studio Location</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight mb-3 sm:mb-4">
             Visit Our Lucknow Studio
           </h2>
-          <p className="text-neutral-400 text-sm font-light">
+          <p className="text-neutral-400 text-xs sm:text-sm font-light">
             Drop by for a cup of tea and a detailed walkthrough of materials, hardware fittings, and 3D design portfolios.
           </p>
         </div>

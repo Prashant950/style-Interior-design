@@ -1,22 +1,5 @@
-/**
- * Style Well DYD — Premium Interior Design & Decoration Studio (Lucknow)
- * स्टाइल वेल डाइड
- */
-
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { IntroSection } from './components/IntroSection';
-import { ServicesSection } from './components/ServicesSection';
-import { FeaturedProjects } from './components/FeaturedProjects';
-import { BeforeAfterSection } from './components/BeforeAfterSection';
-import { DesignProcessSection } from './components/DesignProcessSection';
-import { StylesSection } from './components/StylesSection';
-import { Visualization3DSection } from './components/Visualization3DSection';
-import { GallerySection } from './components/GallerySection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { EnquirySection } from './components/EnquirySection';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { WhatsAppFloating } from './components/WhatsAppFloating';
 import { EnquiryModal } from './components/EnquiryModal';
@@ -25,6 +8,15 @@ import { AdminDashboard } from './components/AdminDashboard';
 import { storageService } from './services/storageService';
 import { Project, Service, GalleryItem, Testimonial, EnquiryLead, BusinessSettings } from './types';
 import { CheckCircle2, Download, Shield } from 'lucide-react';
+
+// Dedicated Page Components
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { ProjectsPage } from './pages/ProjectsPage';
+import { TransformationsPage } from './pages/TransformationsPage';
+import { GalleryPage } from './pages/GalleryPage';
+import { ContactPage } from './pages/ContactPage';
 
 export default function App() {
   // State from storage service
@@ -35,12 +27,42 @@ export default function App() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => storageService.getTestimonials());
   const [leads, setLeads] = useState<EnquiryLead[]>(() => storageService.getLeads());
 
-  // Navigation & Modals
-  const [activeSection, setActiveSection] = useState<string>('home');
+  // Clean Page Routing & Navigation (Actual Clean URL Paths without #)
+  const getPageFromPath = (): string => {
+    // Check clean pathname first, or fallback if hash was present
+    const path = window.location.pathname.replace(/^\//, '').toLowerCase().trim();
+    const hash = window.location.hash.replace('#', '').toLowerCase().trim();
+    const route = path || hash;
+
+    if (route === 'transformations' || route === 'before-after') return 'before-after';
+    const validPages = ['about', 'services', 'projects', 'gallery', 'contact'];
+    return validPages.includes(route) ? route : 'home';
+  };
+
+  const [currentPage, setCurrentPage] = useState<string>(() => getPageFromPath());
+
   const [enquiryModalOpen, setEnquiryModalOpen] = useState<boolean>(false);
   const [enquiryPrefillType, setEnquiryPrefillType] = useState<string>('Home Interior');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [adminOpen, setAdminOpen] = useState<boolean>(false);
+
+  // Sync browser back / forward navigation and clean any leftover hash
+  useEffect(() => {
+    // If URL had a # on load, convert it to clean real path
+    if (window.location.hash) {
+      const page = getPageFromPath();
+      const cleanPath = page === 'home' ? '/' : `/${page === 'before-after' ? 'transformations' : page}`;
+      window.history.replaceState({ page }, '', cleanPath);
+    }
+
+    const handlePopState = () => {
+      const page = getPageFromPath();
+      setCurrentPage(page);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Toast Notification
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -52,25 +74,15 @@ export default function App() {
     }, 4500);
   };
 
-  // Scroll to section handler
-  const handleNavigate = (sectionId: string) => {
-    setActiveSection(sectionId);
-    if (sectionId === 'home' || !sectionId) {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-      return;
-    }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navOffset = 70; // Clearance for the sticky header
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
-      });
-    } else {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }
+  // Real Path Navigation handler without # (e.g. /about, /services, /projects)
+  const handleNavigate = (pageId: string) => {
+    const validPages = ['home', 'about', 'services', 'projects', 'before-after', 'gallery', 'contact'];
+    const targetPage = validPages.includes(pageId) ? pageId : 'home';
+    setCurrentPage(targetPage);
+
+    const cleanPath = targetPage === 'home' ? '/' : `/${targetPage === 'before-after' ? 'transformations' : targetPage}`;
+    window.history.pushState({ page: targetPage }, '', cleanPath);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   // Lead Submission
@@ -109,7 +121,6 @@ export default function App() {
 
   // Download Project ZIP handler
   const handleDownloadZip = () => {
-    // Triggers direct download of the pre-packaged source archive
     showToast('Preparing complete style-well-dyd source package (.zip)...');
     const link = document.createElement('a');
     link.href = '/style-well-dyd.zip';
@@ -120,8 +131,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0c0e] text-[#f4f4f0] font-sans antialiased selection:bg-[#c5a059] selection:text-black">
-      {/* Main Navbar */}
+    <div className="min-h-screen bg-[#0b0c0e] text-[#f4f4f0] font-sans antialiased selection:bg-[#c5a059] selection:text-black flex flex-col justify-between">
+      {/* Fixed Luxury Main Navigation */}
       <Navbar
         settings={settings}
         onOpenEnquiry={(type) => {
@@ -129,94 +140,97 @@ export default function App() {
           setEnquiryModalOpen(true);
         }}
         onNavigate={handleNavigate}
-        activeSection={activeSection}
+        activeSection={currentPage}
         onOpenAdmin={() => setAdminOpen(true)}
       />
 
-      {/* Hero Section */}
-      <div id="home">
-        <Hero
-          settings={settings}
-          onOpenEnquiry={() => {
-            setEnquiryPrefillType('Home Interior');
-            setEnquiryModalOpen(true);
-          }}
-          onExploreProjects={() => handleNavigate('projects')}
-        />
-      </div>
+      {/* Main Distinct Page Content */}
+      <main className="flex-1">
+        {currentPage === 'home' && (
+          <HomePage
+            settings={settings}
+            projects={projects}
+            services={services}
+            testimonials={testimonials}
+            onNavigate={handleNavigate}
+            onOpenEnquiry={(type) => {
+              setEnquiryPrefillType(type || 'Home Interior');
+              setEnquiryModalOpen(true);
+            }}
+            onSelectProject={(proj) => setSelectedProject(proj)}
+          />
+        )}
 
-      {/* Introduction Philosophy */}
-      <IntroSection
-        settings={settings}
-        onOpenEnquiry={() => {
-          setEnquiryPrefillType('Consultation');
-          setEnquiryModalOpen(true);
-        }}
-      />
+        {currentPage === 'about' && (
+          <AboutPage
+            settings={settings}
+            onOpenEnquiry={(type) => {
+              setEnquiryPrefillType(type || 'About Studio Consultation');
+              setEnquiryModalOpen(true);
+            }}
+            onNavigate={handleNavigate}
+          />
+        )}
 
-      {/* Featured Projects Portfolio */}
-      <FeaturedProjects
-        projects={projects}
-        onSelectProject={(proj) => setSelectedProject(proj)}
-        onOpenEnquiry={(title) => {
-          setEnquiryPrefillType(title || 'Project Consultation');
-          setEnquiryModalOpen(true);
-        }}
-      />
+        {currentPage === 'services' && (
+          <ServicesPage
+            services={services}
+            settings={settings}
+            onOpenEnquiry={(type) => {
+              setEnquiryPrefillType(type || 'Service Inquiry');
+              setEnquiryModalOpen(true);
+            }}
+            onNavigate={handleNavigate}
+          />
+        )}
 
-      {/* Interior Services */}
-      <ServicesSection
-        services={services}
-        onOpenEnquiry={(srv) => {
-          setEnquiryPrefillType(srv || 'Services');
-          setEnquiryModalOpen(true);
-        }}
-      />
+        {currentPage === 'projects' && (
+          <ProjectsPage
+            projects={projects}
+            settings={settings}
+            onSelectProject={(proj) => setSelectedProject(proj)}
+            onOpenEnquiry={(title) => {
+              setEnquiryPrefillType(title || 'Project Consultation');
+              setEnquiryModalOpen(true);
+            }}
+            onNavigate={handleNavigate}
+          />
+        )}
 
-      {/* Before / After Transformation Slider */}
-      <BeforeAfterSection />
+        {currentPage === 'before-after' && (
+          <TransformationsPage
+            settings={settings}
+            onOpenEnquiry={(type) => {
+              setEnquiryPrefillType(type || 'Renovation Consultation');
+              setEnquiryModalOpen(true);
+            }}
+            onNavigate={handleNavigate}
+          />
+        )}
 
-      {/* 7-Step Design Journey */}
-      <DesignProcessSection
-        onOpenEnquiry={() => {
-          setEnquiryPrefillType('Consultation Step 01');
-          setEnquiryModalOpen(true);
-        }}
-      />
+        {currentPage === 'gallery' && (
+          <GalleryPage
+            gallery={gallery}
+            settings={settings}
+            onOpenEnquiry={(type) => {
+              setEnquiryPrefillType(type || 'Gallery Inspiration Inquiry');
+              setEnquiryModalOpen(true);
+            }}
+            onNavigate={handleNavigate}
+          />
+        )}
 
-      {/* 3D Visualization */}
-      <Visualization3DSection
-        onOpenEnquiry={() => {
-          setEnquiryPrefillType('3D Walkthrough Consultation');
-          setEnquiryModalOpen(true);
-        }}
-      />
-
-      {/* Curated Aesthetic Styles */}
-      <StylesSection
-        onOpenEnquiry={(style) => {
-          setEnquiryPrefillType(style || 'Design Style Consultation');
-          setEnquiryModalOpen(true);
-        }}
-      />
-
-      {/* Image Gallery with Lightbox */}
-      <GallerySection gallery={gallery} />
-
-      {/* Testimonials */}
-      <TestimonialsSection testimonials={testimonials} />
-
-      {/* Lead Enquiry Form */}
-      <EnquirySection
-        onSubmitLead={handleLeadSubmit}
-        prefilledType={enquiryPrefillType}
-      />
-
-      {/* Studio Location & Contacts */}
-      <ContactSection
-        settings={settings}
-        onOpenEnquiry={() => setEnquiryModalOpen(true)}
-      />
+        {currentPage === 'contact' && (
+          <ContactPage
+            settings={settings}
+            onSubmitLead={handleLeadSubmit}
+            onOpenEnquiry={() => {
+              setEnquiryPrefillType('General Inquiry');
+              setEnquiryModalOpen(true);
+            }}
+          />
+        )}
+      </main>
 
       {/* Architectural Footer */}
       <Footer
@@ -229,7 +243,7 @@ export default function App() {
       {/* Floating WhatsApp Action Button */}
       <WhatsAppFloating phone={settings.whatsapp} />
 
-      {/* Consultation Modal */}
+      {/* Consultation Lead Modal */}
       <EnquiryModal
         isOpen={enquiryModalOpen}
         onClose={() => setEnquiryModalOpen(false)}

@@ -51,9 +51,9 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
   };
 
   return (
-    <section id="consultation" className="py-24 bg-[#0b0c0e] relative border-t border-white/5">
+    <section id="consultation" className="py-12 sm:py-16 md:py-20 bg-[#0b0c0e] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Narrative */}
           <div className="lg:col-span-5 space-y-6">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium">

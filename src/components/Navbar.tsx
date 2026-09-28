@@ -74,21 +74,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Brand Logo & Name */}
             <button
               onClick={() => handleLinkClick('home')}
-              className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none"
+              className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer focus:outline-none"
             >
               {/* Minimal Architectural Logo Symbol */}
-              <div className="w-10 h-10 border border-[#c5a059] flex items-center justify-center relative overflow-hidden bg-[#121418] transition-all group-hover:border-[#e0c58e] group-hover:shadow-[0_0_15px_rgba(197,160,89,0.3)] shrink-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 border border-[#c5a059] flex items-center justify-center relative overflow-hidden bg-[#121418] transition-all group-hover:border-[#e0c58e] group-hover:shadow-[0_0_15px_rgba(197,160,89,0.3)] shrink-0">
                 <div className="absolute inset-0.5 border border-white/15"></div>
-                <span className="font-serif font-bold text-sm tracking-wider text-[#c5a059]">
+                <span className="font-serif font-bold text-xs sm:text-sm tracking-wider text-[#c5a059]">
                   SWD
                 </span>
               </div>
-              <div className="hidden sm:block">
-                <div className="text-base sm:text-lg lg:text-xl font-bold tracking-wider font-serif text-white flex items-center gap-1.5 leading-tight">
+              <div>
+                <div className="text-xs sm:text-lg lg:text-xl font-bold tracking-wider font-serif text-white flex items-center gap-1.5 leading-tight">
                   STYLE WELL DYD
                 </div>
-                <p className="text-[9px] sm:text-[10px] tracking-widest text-[#c5a059] uppercase font-sans font-medium">
-                  {settings.hindiName} · Lucknow
+                <p className="text-[8px] sm:text-[10px] tracking-widest text-[#c5a059] uppercase font-sans font-medium">
+                  Lucknow
                 </p>
               </div>
             </button>
@@ -114,26 +114,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Right Action Icons & Primary CTA (Desktop) */}
             <div className="hidden sm:flex items-center gap-3 lg:gap-4">
               {/* Instagram Link */}
-              <a
-                href={settings.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-[#c5a059] transition-colors p-2 rounded-full hover:bg-white/5"
-                title="Follow us on Instagram"
-                aria-label="Instagram profile"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
+             
 
               {/* Admin Portal Shortcut */}
-              <button
-                onClick={onOpenAdmin}
-                className="text-neutral-400 hover:text-white p-2 rounded-full hover:bg-white/5 transition-colors cursor-pointer"
-                title="Admin Console"
-                aria-label="Admin Console"
-              >
-                <Shield className="w-4 h-4" />
-              </button>
+             
 
               {/* Primary Consultation CTA */}
               <button

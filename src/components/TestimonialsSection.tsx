@@ -10,19 +10,19 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ testim
   const activeTestimonials = testimonials.filter((t) => t.active);
 
   return (
-    <section className="py-24 bg-[#0e1014] relative border-t border-white/5">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#0e1014] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-3">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-2 sm:mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Client Voices</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight">
               Testimonials from Lucknow
             </h2>
           </div>
-          <p className="text-neutral-400 text-sm max-w-md font-light">
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-md font-light">
             Real feedback from homeowners, professionals, and corporate leaders who entrusted their spaces to Style Well DYD.
           </p>
         </div>

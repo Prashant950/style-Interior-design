@@ -16,20 +16,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const activeServices = services.filter((s) => s.active);
 
   return (
-    <section id="services" className="py-24 bg-[#0b0c0e] relative border-t border-white/5">
+    <section id="services" className="py-12 sm:py-16 md:py-20 bg-[#0b0c0e] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-4 sm:pb-6 border-b border-white/10 gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-3">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-2 sm:mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Tailored Capabilities</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight">
               Bespoke Interior Services
             </h2>
           </div>
-          <p className="text-neutral-400 text-sm max-w-md font-light">
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-md font-light">
             Comprehensive turnkey interior architecture & styling solutions for homes, kitchens, and offices across Lucknow.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         </div>
 
         {/* Bottom Turnkey Guarantee Banner */}
-        <div className="mt-16 p-8 bg-[#181a20] border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="mt-8 sm:mt-12 p-6 sm:p-8 bg-[#181a20] border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
             <h4 className="text-lg font-serif text-white mb-1">Looking for a customized turnkey package in Lucknow?</h4>
             <p className="text-xs text-neutral-400">

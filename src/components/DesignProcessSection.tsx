@@ -10,20 +10,20 @@ export const DesignProcessSection: React.FC<DesignProcessSectionProps> = ({
   onOpenEnquiry
 }) => {
   return (
-    <section className="py-24 bg-[#0e1014] relative border-t border-white/5">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#0e1014] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-3">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-2 sm:mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Systematic Execution</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight">
               Our 7-Step Design Journey
             </h2>
           </div>
-          <p className="text-neutral-400 text-sm max-w-md font-light">
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-md font-light">
             Transparent milestones, photorealistic 3D previews, and white-glove site delivery without stress.
           </p>
         </div>
@@ -64,7 +64,7 @@ export const DesignProcessSection: React.FC<DesignProcessSectionProps> = ({
         </div>
 
         {/* CTA prompt */}
-        <div className="mt-14 text-center">
+        <div className="mt-8 sm:mt-10 text-center">
           <button
             onClick={onOpenEnquiry}
             className="px-8 py-3.5 bg-[#c5a059] hover:bg-[#d8b46d] text-black font-semibold text-xs uppercase tracking-widest inline-flex items-center gap-2 cursor-pointer transition-all shadow-xl"

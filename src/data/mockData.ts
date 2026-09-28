@@ -199,44 +199,44 @@ export const initialServices: Service[] = [
   },
   {
     id: 'srv-3',
-    title: 'Commercial & Office Interiors',
-    slug: 'commercial-interiors',
-    shortDesc: 'Inspiring workspaces, corporate offices, clinics, retail showrooms, and luxury hospitality lounges.',
-    fullDesc: 'Boost workplace productivity and impress your clients. We build brand-aligned commercial environments balancing acoustics, ergonomic task zones, collaborative lounges, and durable finishes.',
+    title: 'Wall Interior & Decorative Paneling',
+    slug: 'wall-interior-paneling',
+    shortDesc: 'Acoustic fluted louvers, charcoal panels, CNC jali, luxury wallpaper textures & Italian stone wall cladding.',
+    fullDesc: 'Transform dull walls into striking architectural focal points. We install acoustic fluted wooden louvers, high-density charcoal panels, imported metallic wallpaper, CNC brass inlays, and customized bed-back cushioning.',
     features: [
-      'Reception areas & brand identity feature walls',
-      'Executive cabins & boardroom audio-visual design',
-      'Acoustic ceiling baffles & sound-dampened meeting pods',
-      'HVAC, fire-safety, and electrical compliance'
+      'Fluted WPC & charcoal louvers paneling',
+      'Acoustic wooden slats with sound dampening',
+      'CNC jali partitions with PVD brass inlays',
+      'Textured Italian stucco, wallpaper & PU coatings'
     ],
-    process: ['Workflow & Headcount Analysis', 'Acoustic & Zoning Layout', 'Phased Fit-out', 'Zero-Downtime Handover'],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    process: ['Wall Health & Alignment Check', 'Texture & Paneling Mockups', 'Precision Laser Installation', 'Edge Finishing & Sealing'],
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
     active: true,
     order: 3
   },
   {
     id: 'srv-4',
-    title: 'Turnkey Renovation & Remodeling',
-    slug: 'renovation-remodeling',
-    shortDesc: 'Complete revitalization of older properties, civil repairs, modern upgrades, and structural redesign.',
-    fullDesc: 'Transform dated residences into modern masterpieces without the stress of managing individual contractors. We handle civil modifications, waterproofing, tile replanning, and aesthetic renewal.',
+    title: 'False Ceiling & Architectural Lighting',
+    slug: 'false-ceiling-lighting',
+    shortDesc: 'Designer Gyproc ceilings with magnetic track lights, warm cove LED profiles & smart automation dimming.',
+    fullDesc: 'Elevate your vertical space with seamless Saint-Gobain Gyproc false ceilings, concealed warm cove lighting channels, linear magnetic track spots, and chandelier reinforcement boxes designed for low heat and high longevity.',
     features: [
-      'Civil modifications & wall openings',
-      'Modern electrical rewiring & plumbing overhauls',
-      'Flooring upgrade with Italian marble or vitrified slabs',
-      'Designer false ceilings & ambient cove lighting'
+      'Saint-Gobain Gyproc moisture-resistant false ceiling',
+      'Magnetic linear track lighting & spotlight grids',
+      'Concealed warm cove LED strips (Philips/Coble)',
+      'Acoustic perimeter drop ceilings for AC ducting'
     ],
-    process: ['Structural Health Inspection', 'Demolition & Civil Redesign', 'Refurbishment', 'Final Polish & Handover'],
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
+    process: ['Laser Grid Dimensioning', 'Framing & Conduit Laying', 'Gypsum Board Fixing', 'Joint Taping & Paint Finish'],
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
     active: true,
     order: 4
   },
   {
     id: 'srv-5',
-    title: 'Luxury Bedroom & Wardrobes',
+    title: 'Luxury Bedroom & Modular Wardrobes',
     slug: 'bedroom-interiors',
-    shortDesc: 'Sanctuary bedroom suites, walk-in closets, lacquered glass wardrobes, and ambient lighting.',
-    fullDesc: 'Indulge in tailored serenity. We design lavish master bedrooms featuring bespoke cushioned headboards, sound-absorbing wood paneling, hidden vanity counters, and floor-to-ceiling sliding wardrobes.',
+    shortDesc: 'Sanctuary bedroom suites, walk-in closets, lacquered glass sliding wardrobes & ambient bed-backs.',
+    fullDesc: 'Indulge in tailored serenity. We design lavish master bedrooms featuring bespoke cushioned headboards, sound-absorbing wood paneling, hidden vanity counters, and floor-to-ceiling sliding wardrobes with sensor lighting.',
     features: [
       'Floor-to-ceiling sliding & hinged wardrobe systems',
       'Integrated LED profile lighting with sensor switches',
@@ -250,12 +250,12 @@ export const initialServices: Service[] = [
   },
   {
     id: 'srv-6',
-    title: 'Living Room & Décor Styling',
+    title: 'Living Room & TV Media Consoles',
     slug: 'living-room-interiors',
-    shortDesc: 'Statement living rooms with accent media walls, fluted paneling, and curated art & furniture.',
+    shortDesc: 'Statement living rooms with accent media walls, Italian marble consoles, fluted paneling & art styling.',
     fullDesc: 'The centerpiece of every luxury home. We curate harmonious color palettes, Italian sofa sets, designer chandeliers, wallpaper textures, and motorized curtains that leave lasting impressions.',
     features: [
-      'TV console & acoustic fluted panel walls',
+      'Floating TV console & acoustic fluted panel walls',
       'Curated furniture sourcing & custom upholstery',
       'Designer lighting, sconces & statement chandeliers',
       'Wall textures, moldings & art placement'
@@ -264,6 +264,74 @@ export const initialServices: Service[] = [
     image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
     active: true,
     order: 6
+  },
+  {
+    id: 'srv-7',
+    title: 'Luxury Bathrooms & Vanities',
+    slug: 'bathroom-vanities',
+    shortDesc: 'Bespoke floating quartz vanities, LED defogging mirrors, glass shower cubicles & luxury sanitary fittings.',
+    fullDesc: 'Turn ordinary bathrooms into spa-like private sanctuaries. We design custom floating quartz vanities, LED backlit anti-fog mirrors, frameless toughened glass partitions, and concealed Grohe/Kohler thermostatic valves.',
+    features: [
+      'Custom floating waterproof vanities with quartz tops',
+      'LED backlit defogger touch mirrors',
+      'Frameless toughened glass shower enclosures',
+      'Concealed diverters, rain showers & niche LED lighting'
+    ],
+    process: ['Plumbing & Gradient Audit', 'Sanitary & Tile Selection', 'Waterproofing Test', 'Precision Installation'],
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
+    active: true,
+    order: 7
+  },
+  {
+    id: 'srv-8',
+    title: 'Flooring & Italian Marble Solutions',
+    slug: 'flooring-marble',
+    shortDesc: 'Italian Statuario marble laying, mirror diamond polishing, large vitrified tiles & wooden flooring.',
+    fullDesc: 'Flooring is the foundation of luxury. We provide expert laying of imported Italian marble, epoxy joint filling, multi-stage diamond mirror polishing, and seamless wooden herringbone laminate installations.',
+    features: [
+      'Imported Italian Statuario & Bottochino marble laying',
+      'Diamond pad mirror gloss polishing & crystallization',
+      'Large format 4x2 & 6x4 ft glazed vitrified tile flooring',
+      'Wooden laminate & herringbone parquet flooring'
+    ],
+    process: ['Sub-floor Leveling & Screed', 'Dry-lay Pattern Matching', 'Epoxy Grouted Laying', 'Diamond Crystallization Polish'],
+    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80',
+    active: true,
+    order: 8
+  },
+  {
+    id: 'srv-9',
+    title: 'Turnkey Renovation & Remodeling',
+    slug: 'renovation-remodeling',
+    shortDesc: 'Complete revitalization of older properties, civil repairs, modern upgrades, and structural redesign.',
+    fullDesc: 'Transform dated residences into modern masterpieces without the stress of managing individual contractors. We handle civil modifications, waterproofing, tile replanning, and aesthetic renewal.',
+    features: [
+      'Civil modifications & wall openings',
+      'Modern electrical rewiring & plumbing overhauls',
+      'Flooring upgrade with Italian marble or vitrified slabs',
+      'Designer false ceilings & ambient cove lighting'
+    ],
+    process: ['Structural Health Inspection', 'Demolition & Civil Redesign', 'Refurbishment', 'Final Polish & Handover'],
+    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
+    active: true,
+    order: 9
+  },
+  {
+    id: 'srv-10',
+    title: 'Commercial & Office Interiors',
+    slug: 'commercial-interiors',
+    shortDesc: 'Inspiring workspaces, corporate offices, clinics, retail showrooms, and luxury hospitality lounges.',
+    fullDesc: 'Boost workplace productivity and impress your clients. We build brand-aligned commercial environments balancing acoustics, ergonomic task zones, collaborative lounges, and durable finishes.',
+    features: [
+      'Reception areas & brand identity feature walls',
+      'Executive cabins & boardroom audio-visual design',
+      'Acoustic ceiling baffles & sound-dampened meeting pods',
+      'HVAC, fire-safety, and electrical compliance'
+    ],
+    process: ['Workflow & Headcount Analysis', 'Acoustic & Zoning Layout', 'Phased Fit-out', 'Zero-Downtime Handover'],
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    active: true,
+    order: 10
   }
 ];
 

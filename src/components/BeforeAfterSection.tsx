@@ -72,23 +72,23 @@ export const BeforeAfterSection: React.FC = () => {
   };
 
   return (
-    <section id="before-after" className="py-24 bg-[#0b0c0e] relative border-t border-white/5">
+    <section id="before-after" className="py-12 sm:py-16 md:py-20 bg-[#0b0c0e] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-2 sm:mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Turnkey Visual Evidence</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight mb-3 sm:mb-4">
             Before & After Transformations
           </h2>
-          <p className="text-neutral-400 text-sm font-light">
+          <p className="text-neutral-400 text-xs sm:text-sm font-light">
             Slide the divider to witness how Style Well DYD reimagines bare brickwork and dated layouts into luxury architectural spaces.
           </p>
 
           {/* Room Selector */}
-          <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
+          <div className="flex items-center justify-center gap-2 mt-4 sm:mt-6 flex-wrap">
             {transformations.map((t) => (
               <button
                 key={t.id}

@@ -43,26 +43,26 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ gallery }) => {
   }, [lightboxIndex, handlePrev, handleNext]);
 
   return (
-    <section id="gallery" className="py-24 bg-[#0b0c0e] relative border-t border-white/5">
+    <section id="gallery" className="py-12 sm:py-16 md:py-20 bg-[#0b0c0e] relative border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-3">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#c5a059] font-medium mb-2 sm:mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Visual Gallery</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight">
               Interior Details & Moments
             </h2>
           </div>
-          <p className="text-neutral-400 text-sm max-w-md font-light">
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-md font-light">
             A curated look into our bespoke joinery, stone veining, acoustic treatments, and curated finishes in Lucknow.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 scrollbar-none">
           {categories.map((cat) => (
             <button
               key={cat}

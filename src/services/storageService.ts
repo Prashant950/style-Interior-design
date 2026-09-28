@@ -17,7 +17,7 @@ import {
 
 const STORAGE_KEYS = {
   PROJECTS: 'stylewell_projects_v1',
-  SERVICES: 'stylewell_services_v1',
+  SERVICES: 'stylewell_services_v2',
   GALLERY: 'stylewell_gallery_v1',
   TESTIMONIALS: 'stylewell_testimonials_v1',
   LEADS: 'stylewell_leads_v1',
