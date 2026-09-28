@@ -144,7 +144,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="e.g. 098072 77025"
+                    placeholder="e.g. 95065 36127"
                     className="w-full bg-[#181a20] border border-white/10 px-3 py-2 text-xs text-white focus:outline-none focus:border-[#c5a059] font-mono"
                   />
                 </div>
@@ -162,6 +162,9 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   >
                     <option value="Home Interior">Home Interior</option>
                     <option value="Modular Kitchen">Modular Kitchen</option>
+                    <option value="Wall Interior & Paneling">Wall Interior & Paneling</option>
+                    <option value="False Ceiling & Lighting">False Ceiling & Lighting</option>
+                    <option value="Commercial Grid Ceiling">Commercial Office Grid Ceiling</option>
                     <option value="Bedroom">Bedroom</option>
                     <option value="Living Room">Living Room</option>
                     <option value="Office">Office Space</option>

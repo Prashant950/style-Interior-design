@@ -17,11 +17,11 @@ import {
 
 const STORAGE_KEYS = {
   PROJECTS: 'stylewell_projects_v1',
-  SERVICES: 'stylewell_services_v2',
-  GALLERY: 'stylewell_gallery_v1',
+  SERVICES: 'stylewell_services_v3',
+  GALLERY: 'stylewell_gallery_v2',
   TESTIMONIALS: 'stylewell_testimonials_v1',
   LEADS: 'stylewell_leads_v1',
-  SETTINGS: 'stylewell_settings_v1',
+  SETTINGS: 'stylewell_settings_v2',
   ADMIN_AUTH: 'stylewell_admin_auth_v1'
 };
 

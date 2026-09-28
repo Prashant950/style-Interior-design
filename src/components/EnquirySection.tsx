@@ -96,15 +96,15 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
               <p className="text-neutral-400">Prefer direct communication?</p>
               <div className="mt-2 flex items-center gap-4">
                 <a
-                  href="tel:09807277025"
+                  href="tel:9506536127"
                   className="flex items-center gap-1.5 text-white hover:text-[#c5a059] font-mono"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
-                  <span>098072 77025</span>
+                  <span>95065 36127</span>
                 </a>
                 <span className="text-neutral-600">·</span>
                 <a
-                  href={`https://wa.me/919807277025?text=${encodeURIComponent(
+                  href={`https://wa.me/919506536127?text=${encodeURIComponent(
                     'Hello Style Well DYD, I want to discuss my interior design project.'
                   )}`}
                   target="_blank"
@@ -176,7 +176,7 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. 098072 77025"
+                      placeholder="e.g. 95065 36127"
                       className="w-full bg-[#181a20] border border-white/15 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#c5a059] transition-colors font-mono"
                     />
                   </div>
@@ -222,9 +222,12 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                     >
                       <option value="Home Interior">Home Interior</option>
                       <option value="Modular Kitchen">Modular Kitchen</option>
+                      <option value="Wall Interior & Paneling">Wall Interior & Paneling</option>
+                      <option value="False Ceiling & Lighting">False Ceiling & Lighting</option>
+                      <option value="Commercial Grid Ceiling">Commercial Office Grid Ceiling</option>
                       <option value="Bedroom">Bedroom</option>
                       <option value="Living Room">Living Room</option>
-                      <option value="Office">Office Interior</option>
+                      <option value="Office">Office / Commercial</option>
                       <option value="Shop">Shop / Retail</option>
                       <option value="Renovation">Turnkey Renovation</option>
                       <option value="Other">Other Space</option>

@@ -4,8 +4,8 @@ export const initialSettings: BusinessSettings = {
   businessName: 'STYLE WELL DYD',
   hindiName: 'स्टाइल वेल डाइड',
   tagline: 'Transforming Spaces. Creating Experiences.',
-  phone: '098072 77025',
-  whatsapp: '+919807277025',
+  phone: '+91 95065 36127',
+  whatsapp: '+919506536127',
   email: 'info@stylewelldyd.com',
   instagram: '@stylewelldyd',
   instagramUrl: 'https://www.instagram.com/stylewelldyd?r=nametag',
@@ -332,10 +332,35 @@ export const initialServices: Service[] = [
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
     active: true,
     order: 10
+  },
+  {
+    id: 'srv-11',
+    title: 'Commercial Grid False Ceiling & Acoustic Tiles',
+    slug: 'office-grid-ceiling',
+    shortDesc: 'Modular 2x2 / 2x4 ft acoustic grid ceilings, Armstrong/Gyproc mineral fiber tiles & integrated square LED panels.',
+    fullDesc: 'Specialized modular grid ceiling installations engineered for modern offices, corporate conference halls, IT workspaces, hospitals, and educational facilities across Lucknow. We install standard 2x2 and 2x4 ft Armstrong and Saint-Gobain acoustic tiles, heavy-gauge T-grids, flush-mounted LED panel lights, and acoustic insulation for superior noise reduction and easy overhead utility maintenance.',
+    features: [
+      '2x2 & 2x4 ft Armstrong / Saint-Gobain Mineral Fiber Tiles',
+      'Integrated Flush 2x2 ft LED Panel Lights & Diffusers',
+      'High Sound Absorption (NRC 0.65 - 0.75) & Anti-Sag Performance',
+      'Concealed & Exposed T-Grid Frames with Quick Maintenance Access'
+    ],
+    process: ['Laser Grid Layout & Height Alignment', 'Main Runner & Cross-Tee Framework Installation', 'LED Panel Electrical Wiring', 'Tile Laying & Clean Handover'],
+    image: '/images/office-grid-ceiling.jpg',
+    active: true,
+    order: 11
   }
 ];
 
 export const initialGallery: GalleryItem[] = [
+  {
+    id: 'gal-office-ceiling',
+    title: 'Modular Acoustic Grid False Ceiling & LED Panels',
+    category: 'Ceiling',
+    imageUrl: '/images/office-grid-ceiling.jpg',
+    projectTitle: 'Cyber Tower Corporate Office',
+    location: 'Vibhuti Khand, Gomti Nagar, Lucknow'
+  },
   {
     id: 'gal-1',
     title: 'Statuario Marble & Fluted Paneling',
