@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Send, CheckCircle2, Phone, MessageCircle } from 'lucide-react';
 import { EnquiryLead } from '../types';
 
@@ -29,6 +29,28 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      if (modalRef.current) {
+        modalRef.current.scrollTop = 0;
+      }
+    } else {
+      document.body.style.overflow = '';
+      setSubmitted(false);
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (prefilledType) {
+      setFormData((prev) => ({ ...prev, projectType: prefilledType }));
+    }
+  }, [prefilledType]);
 
   if (!isOpen) return null;
 
@@ -56,7 +78,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="relative w-full max-w-xl bg-[#121418] border border-white/15 p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[92vh]">
+      <div
+        ref={modalRef}
+        className="relative w-full max-w-xl bg-[#121418] border border-white/15 p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[92vh] animate-fadeIn"
+      >
         {/* Close Button */}
         <button
           onClick={onClose}

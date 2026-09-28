@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, MapPin, Sparkles, Check, ArrowRight, Layers, Palette } from 'lucide-react';
 import { Project } from '../types';
 
@@ -14,6 +14,21 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onOpenEnquiry
 }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (project) {
+      document.body.style.overflow = 'hidden';
+      if (containerRef.current) {
+        containerRef.current.scrollTop = 0;
+      }
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [project]);
 
   if (!project) return null;
 
@@ -21,8 +36,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   const currentImage = allImages[activeImageIndex] || project.coverImage;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-      <div className="relative w-full max-w-5xl bg-[#121418] border border-white/15 shadow-2xl my-8 overflow-hidden">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+    >
+      <div className="relative w-full max-w-5xl bg-[#121418] border border-white/15 shadow-2xl my-8 overflow-hidden animate-fadeIn">
         {/* Close Button */}
         <button
           onClick={onClose}

@@ -69,6 +69,17 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   // Status Filter for leads
   const [leadStatusFilter, setLeadStatusFilter] = useState<string>('All');
 
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   // Handle Admin Login
