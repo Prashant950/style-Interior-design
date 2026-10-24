@@ -42,6 +42,19 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
       if (modalRef.current) {
         modalRef.current.scrollTop = 0;
       }
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          onClose();
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = '';
       setSubmitted(false);
@@ -51,7 +64,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   useEffect(() => {
     if (prefilledType) {
@@ -198,17 +211,30 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     }, 350);
   };
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div
+      onClick={handleBackdropClick}
+      className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md overflow-y-auto overscroll-contain flex justify-center p-3 sm:p-6 animate-modalFadeIn"
+      role="dialog"
+      aria-modal="true"
+    >
       <div
         ref={modalRef}
-        className="relative w-full max-w-xl bg-[#121418] border border-white/15 p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[92vh] animate-fadeIn rounded-lg"
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-xl bg-[#121418] border border-white/15 p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[92vh] my-auto animate-modalScaleIn rounded-2xl"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-neutral-400 hover:text-white p-1.5 transition-colors cursor-pointer rounded-full hover:bg-white/10"
+          className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#c5a059] text-neutral-300 hover:text-black border border-white/10 hover:border-[#c5a059] transition-all flex items-center justify-center cursor-pointer shadow-lg active:scale-90 absolute top-4 right-4"
           aria-label="Close modal"
+          title="Close (Esc)"
         >
           <X className="w-5 h-5" />
         </button>

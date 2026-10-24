@@ -154,16 +154,20 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
                 {/* Dual Touch Actions for Mobile & Web */}
                 <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
                   <button
+                    type="button"
                     onClick={() => onSelectProject(project)}
                     className="py-2 px-2.5 bg-[#c5a059]/15 hover:bg-[#c5a059] text-[#c5a059] hover:text-black border border-[#c5a059]/40 hover:border-[#c5a059] rounded text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                    aria-label={`View photos of ${project.title}`}
                   >
                     <Eye className="w-3.5 h-3.5 shrink-0" />
                     <span>View Photos</span>
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => onOpenEnquiry(project.title)}
                     className="py-2 px-2.5 bg-[#1a1c24] hover:bg-[#252834] text-white hover:text-[#c5a059] border border-white/10 hover:border-[#c5a059]/40 rounded text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                    aria-label={`Get quote for ${project.title}`}
                   >
                     <Sparkles className="w-3.5 h-3.5 text-[#c5a059] shrink-0" />
                     <span>Get Quote</span>
