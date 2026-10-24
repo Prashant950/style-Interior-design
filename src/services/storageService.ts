@@ -16,14 +16,22 @@ import {
 } from '../data/mockData';
 
 const STORAGE_KEYS = {
-  PROJECTS: 'stylewell_projects_v1',
-  SERVICES: 'stylewell_services_v3',
-  GALLERY: 'stylewell_gallery_v2',
-  TESTIMONIALS: 'stylewell_testimonials_v1',
-  LEADS: 'stylewell_leads_v1',
-  SETTINGS: 'stylewell_settings_v2',
-  ADMIN_AUTH: 'stylewell_admin_auth_v1'
+  PROJECTS: 'acme_projects_v1',
+  SERVICES: 'acme_services_v1',
+  GALLERY: 'acme_gallery_v1',
+  TESTIMONIALS: 'acme_testimonials_v1',
+  LEADS: 'acme_leads_v1',
+  SETTINGS: 'acme_settings_v1',
+  ADMIN_AUTH: 'acme_admin_auth_v1'
 };
+
+// Clean legacy cache keys if present
+try {
+  ['stylewell_projects_v1', 'stylewell_services_v3', 'stylewell_gallery_v2', 'stylewell_testimonials_v1', 'stylewell_leads_v1', 'stylewell_settings_v2', 'stylewell_admin_auth_v1'].forEach((k) => localStorage.removeItem(k));
+} catch {
+  // Ignore in SSR/restricted environments
+}
+
 
 export const storageService = {
   getProjects: (): Project[] => {
@@ -98,10 +106,22 @@ export const storageService = {
       id: 'lead-' + Date.now(),
       status: 'New',
       createdAt: new Date().toISOString(),
-      notes: ['Submitted via website enquiry portal.']
+      notes: ['Submitted via website consultation form.']
     };
     const updated = [newLead, ...existing];
     storageService.saveLeads(updated);
+
+    // Persist to db.json on disk via /api/enquiries
+    try {
+      fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newLead)
+      }).catch((err) => console.warn('Could not sync to db.json via API:', err));
+    } catch {
+      // Ignore network errors in local dev
+    }
+
     return newLead;
   },
 

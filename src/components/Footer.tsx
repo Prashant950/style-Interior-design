@@ -25,35 +25,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer className="bg-[#08090b] border-t border-white/10 text-neutral-400 text-xs">
       {/* Top Banner Call to Action */}
-      <div className="border-b border-white/5 py-10 sm:py-12 bg-gradient-to-b from-[#101216]/60 to-transparent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#c5a059] block mb-1">
-              {settings.hindiName} · Lucknow Architecture Studio
-            </span>
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif text-white">
-              Ready to create something extraordinary?
-            </h3>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full md:w-auto">
-            <button
-              onClick={() => onNavigate('contact')}
-              className="flex-1 sm:flex-none px-6 py-3 bg-[#c5a059] hover:bg-[#d8b46d] text-black font-semibold uppercase tracking-wider text-xs transition-all shadow-lg shadow-[#c5a059]/15 text-center cursor-pointer active:scale-95"
-            >
-              Get Free Consultation
-            </button>
-            <button
-              onClick={onDownloadZip}
-              className="flex-1 sm:flex-none px-4 py-3 bg-[#121418] hover:bg-[#1c1e24] border border-white/10 text-white font-medium uppercase tracking-wider text-xs inline-flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-95"
-              title="Download Full Project ZIP package"
-            >
-              <Download className="w-3.5 h-3.5 text-[#c5a059]" />
-              <span>Project ZIP</span>
-            </button>
-          </div>
-        </div>
-      </div>
+     
 
       {/* Main Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -61,21 +33,22 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand Column */}
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 border border-[#c5a059] flex items-center justify-center bg-[#121418]">
-                <span className="font-serif font-bold text-xs text-[#c5a059]">SWD</span>
+              <div className="w-10 h-10 rounded-lg border border-[#c5a059]/70 flex items-center justify-center bg-black overflow-hidden shrink-0 p-0.5 shadow-[0_0_15px_rgba(197,160,89,0.25)]">
+                <img
+                  src="/images/acme/brand-icon.jpg"
+                  alt="Acme Interiors Architectural Emblem"
+                  className="w-full h-full object-cover rounded-md filter brightness-105"
+                />
               </div>
               <div>
                 <span className="font-serif font-bold text-sm sm:text-base tracking-wider text-white block">
-                  STYLE WELL DYD
+                  {settings.businessName}
                 </span>
-                <span className="text-[10px] text-[#c5a059] uppercase tracking-wider block font-medium">
-                  {settings.hindiName}
-                </span>
+               
               </div>
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed max-w-sm">
-              Lucknow's bespoke interior decoration and architecture studio. We create spaces of refined elegance, 
-              enduring durability, and thoughtful ergonomics.
+              Lucknow's 5.0-star rated interior designer and turnkey architecture studio. Located opposite Dilkash Plaza, near Vaga Hospital, Aliganj.
             </p>
           </div>
 
@@ -158,7 +131,7 @@ export const Footer: React.FC<FooterProps> = ({
 
                 <a
                   href={`https://wa.me/${formattedPhone}?text=${encodeURIComponent(
-                    'Hello Style Well DYD, I want to discuss an interior project in Lucknow.'
+                    `Hello ${settings.businessName}, I want to discuss an interior project in Lucknow.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -178,9 +151,9 @@ export const Footer: React.FC<FooterProps> = ({
       {/* Bottom Legal & Controls */}
       <div className="border-t border-white/5 py-6 bg-black/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500 text-center sm:text-left">
-          <p>© 2026 Style Well DYD (स्टाइल वेल डाइड). All Rights Reserved. Lucknow, UP.</p>
+          <p>© 2026 {settings.businessName}. All Rights Reserved. Aliganj, Lucknow, UP.</p>
 
-          <div className="flex items-center gap-5">
+          {/* <div className="flex items-center gap-5">
             <button
               onClick={onOpenAdmin}
               className="hover:text-[#c5a059] flex items-center gap-1.5 transition-colors cursor-pointer"
@@ -195,7 +168,7 @@ export const Footer: React.FC<FooterProps> = ({
               <span>Back to Top</span>
               <ArrowUp className="w-3 h-3 text-[#c5a059]" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

@@ -84,4 +84,10 @@ export interface BusinessSettings {
   city: string;
   hours: string;
   googleMapsUrl: string;
+  rating?: number;
+  reviewCount?: number;
+  category?: string;
+  landmark?: string;
+  plusCode?: string;
 }
+

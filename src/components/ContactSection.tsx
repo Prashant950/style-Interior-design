@@ -125,7 +125,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <a
                 href={`https://wa.me/${settings.whatsapp.replace('+', '')}?text=${encodeURIComponent(
-                  'Hello Style Well DYD, I would like to book a site visit in Lucknow.'
+                  `Hello ${settings.businessName}, I would like to book a site visit in Lucknow.`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -140,16 +140,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* Interactive Google Map Preview / Location Box */}
           <div className="lg:col-span-7 bg-[#121418] border border-white/10 overflow-hidden shadow-2xl flex flex-col h-[520px]">
             {/* Map Header */}
-            <div className="p-4 bg-[#181a20] border-b border-white/5 flex items-center justify-between">
+            <div className="p-4 bg-[#181a20] border-b border-white/5 flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2 text-xs text-neutral-300">
-                <MapPin className="w-3.5 h-3.5 text-[#c5a059]" />
-                <span>Ne IIM Rd, near S.M Hospital, Madiyanva, Lucknow 226020</span>
+                <MapPin className="w-3.5 h-3.5 text-[#c5a059] shrink-0" />
+                <span className="truncate">Sitapur Rd, opp. Dilkash Plaza, near VAGA Hospital, Sector K, Aliganj, Lucknow</span>
               </div>
               <a
                 href={settings.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] text-[#c5a059] hover:underline flex items-center gap-1 font-mono"
+                className="text-[11px] text-[#c5a059] hover:underline flex items-center gap-1 font-mono shrink-0"
               >
                 <span>Open in Google Maps</span>
                 <ExternalLink className="w-3 h-3" />
@@ -159,16 +159,27 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             {/* Map View */}
             <div className="flex-1 w-full bg-neutral-900 relative">
               <iframe
-                title="Style Well DYD Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14234.33120610368!2d80.8996!3d26.9048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399955d5b7a0f6a1%3A0x6a123456789abcde!2sIIM%20Rd%2C%20Madiyanva%2C%20Lucknow%2C%20Uttar%20Pradesh%20226020!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                title="Acme Interiors Aliganj Lucknow Location Map"
+                src="https://maps.google.com/maps?q=Sitapur+Rd+opposite+Dilkash+Plaza+near+VAGA+Hospital+Purania+Sector+K+Aliganj+Lucknow+Uttar+Pradesh+226024&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full border-0 filter grayscale contrast-125 opacity-90 hover:grayscale-0 transition-all duration-500"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="absolute bottom-4 left-4 bg-black/85 backdrop-blur-md p-3 border border-white/15 max-w-xs pointer-events-none">
-                <p className="text-xs font-serif font-bold text-white">STYLE WELL DYD</p>
-                <p className="text-[10px] text-neutral-400 mt-0.5">
-                  Ne IIM Rd, near S.M Hospital, Madiyanva, Lucknow
+              <div className="absolute bottom-4 left-4 bg-black/90 backdrop-blur-md p-3.5 border border-[#c5a059]/40 max-w-sm pointer-events-none shadow-2xl rounded">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded border border-[#c5a059] overflow-hidden bg-black shrink-0">
+                    <img src="/images/acme/brand-icon.jpg" alt="Acme Logo" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-serif font-bold text-white leading-tight">{settings.businessName}</p>
+                    <p className="text-[10px] text-[#c5a059] font-mono">5.0 ★ · Plus Code: {settings.plusCode || 'VWXQ+65'}</p>
+                  </div>
+                </div>
+                <p className="text-[10px] text-neutral-300 mt-1.5 leading-snug">
+                  Sitapur Rd, opp. Dilkash Plaza, near Vaga Hospital, Aliganj, Lucknow 226024
+                </p>
+                <p className="text-[9px] text-emerald-400 mt-1 font-mono font-medium">
+                  {settings.landmark}
                 </p>
               </div>
             </div>

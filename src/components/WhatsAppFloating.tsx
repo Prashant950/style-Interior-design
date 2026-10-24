@@ -8,7 +8,7 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ phone }) => 
   const cleanPhone = phone.replace(/[^0-9]/g, '');
   const formattedPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
   const message = encodeURIComponent(
-    'Hello Style Well DYD,\nI am interested in interior design services in Lucknow.\nI would like to discuss my project.'
+    'Hello Acme Interiors,\nI am interested in interior design services in Lucknow.\nI would like to discuss my project.'
   );
 
   return (
@@ -17,7 +17,7 @@ export const WhatsAppFloating: React.FC<WhatsAppFloatingProps> = ({ phone }) => 
         href={`https://wa.me/${formattedPhone}?text=${message}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with Style Well DYD on WhatsApp"
+        aria-label="Chat with Acme Interiors on WhatsApp"
         className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/30"
       >
         {/* Subtle Pulse Animation Ring */}

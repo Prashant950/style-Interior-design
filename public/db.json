@@ -1,0 +1,84 @@
+{
+  "enquiries": [
+    {
+      "name": "Prashant Singh",
+      "phone": "9854545454",
+      "email": "ps22337795@gmail.com",
+      "projectType": "Home Interior",
+      "propertyType": "3BHK Apartment",
+      "location": "lucknow",
+      "approxBudget": "₹10–20 Lakh",
+      "preferredContact": "WhatsApp",
+      "message": "checkdsd",
+      "id": "lead-1792836752749",
+      "status": "New",
+      "createdAt": "2026-10-24T10:12:32.749Z",
+      "notes": [
+        "Submitted via website consultation form."
+      ]
+    },
+    {
+      "name": "Prashant Singh",
+      "phone": "9854545454",
+      "email": "ps2233795@gmail.com",
+      "projectType": "Home Interior",
+      "propertyType": "3BHK Apartment",
+      "location": "lucknow",
+      "approxBudget": "₹10–20 Lakh",
+      "preferredContact": "WhatsApp",
+      "message": "check",
+      "id": "lead-1792836708099",
+      "status": "New",
+      "createdAt": "2026-10-24T10:11:48.099Z",
+      "notes": [
+        "Submitted via website consultation form."
+      ]
+    },
+    {
+      "name": "Aman Verma",
+      "phone": "9876543210",
+      "email": "aman@example.com",
+      "projectType": "Living Room",
+      "propertyType": "3BHK",
+      "location": "Aliganj, Lucknow",
+      "approxBudget": "15 Lakh",
+      "preferredContact": "WhatsApp",
+      "message": "Need false ceiling & biophilic wall"
+    },
+    {
+      "id": "lead-101",
+      "name": "Prashant Dixit",
+      "phone": "086010 50054",
+      "email": "prashant.dixit@gmail.com",
+      "projectType": "Home Interior",
+      "propertyType": "3BHK Apartment (Aliganj)",
+      "location": "Sector K, Aliganj, Lucknow",
+      "approxBudget": "₹10–20 Lakh",
+      "preferredContact": "WhatsApp",
+      "message": "Looking for turnkey interior design including TV media wall, modular kitchen, and false ceiling with cove lights.",
+      "status": "Site Visit Scheduled",
+      "notes": [
+        "Initial phone consultation completed.",
+        "Site visit confirmed for Thursday 11:30 AM."
+      ],
+      "createdAt": "2026-03-24T10:15:00Z"
+    },
+    {
+      "id": "lead-102",
+      "name": "Ananya Kapoor",
+      "phone": "097920 67890",
+      "email": "ananya.k@outlook.com",
+      "projectType": "Modular Kitchen",
+      "propertyType": "Independent Villa",
+      "location": "Purania, Lucknow",
+      "approxBudget": "₹5–10 Lakh",
+      "preferredContact": "Phone",
+      "message": "Want to renovate existing kitchen with acrylic cabinets and quartz countertop. Need 3D visualization first.",
+      "status": "New",
+      "notes": [
+        "Lead submitted through website consultation form."
+      ],
+      "createdAt": "2026-03-26T14:40:00Z"
+    }
+  ]
+}

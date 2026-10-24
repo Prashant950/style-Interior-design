@@ -28,14 +28,14 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
             </h2>
 
             <p className="text-neutral-300 text-base leading-relaxed font-light">
-              At <strong className="font-semibold text-white">Style Well DYD ({settings.hindiName})</strong>, 
+              At <strong className="font-semibold text-white">{settings.businessName} ({settings.hindiName})</strong>, 
               we believe interior design is not merely decoration—it is the art of curating spaces that reflect your personality, 
               amplify comfort, and enhance how you live, work, and host.
             </p>
 
             <p className="text-neutral-400 text-sm leading-relaxed">
-              Based in Lucknow along Ne IIM Road, our dedicated interior studio specializes in bespoke residential residences, 
-              ergonomic modular kitchens, luxurious master suites, and modern office interiors. From initial 3D visualization 
+              Based in Sector K, Aliganj, Lucknow (opposite Dilkash Plaza, near Vaga Hospital, Purania), our 5.0★ rated studio specializes in bespoke residential residences, 
+              biophilic vertical gardens, acoustic fluted paneling, designer POP false ceilings, and modern corporate interiors. From initial 3D visualization 
               to complete turnkey on-site execution, we manage every detail with transparent craftsmanship and premium materials.
             </p>
 
@@ -91,26 +91,27 @@ export const IntroSection: React.FC<IntroSectionProps> = ({
               {/* Primary Large Image */}
               <div className="relative aspect-[4/3] overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
-                  alt="Style Well DYD Interior Architectural Excellence"
+                  src="/images/acme/tv-unit-paneling.png"
+                  alt="Acme Interiors Architectural Excellence in Lucknow"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4 text-left">
                   <p className="text-xs font-mono text-[#c5a059] uppercase tracking-wider">Turnkey Interior Atelier</p>
-                  <p className="text-sm font-serif text-white">Lucknow · Uttar Pradesh</p>
+                  <p className="text-sm font-serif text-white">Aliganj · Lucknow, Uttar Pradesh</p>
                 </div>
               </div>
 
               {/* Offset Accent Card */}
               <div className="hidden sm:block absolute -bottom-8 -left-8 bg-[#181a20] border border-[#c5a059]/30 p-5 shadow-2xl max-w-xs">
                 <p className="text-xs font-serif italic text-neutral-300">
-                  "Every room tells a story. We ensure yours speaks of timeless comfort and refined elegance."
+                  "Every room tells a story. We ensure yours speaks of timeless comfort, living greenery, and refined elegance."
                 </p>
                 <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-[11px] font-bold tracking-wider text-white">STYLE WELL DYD</span>
-                  <span className="text-[10px] text-[#c5a059]">ESTD. LUCKNOW</span>
+                  <span className="text-[11px] font-bold tracking-wider text-white">{settings.businessName}</span>
+                  <span className="text-[10px] text-[#c5a059]">5.0★ ALIGANJ</span>
                 </div>
               </div>
             </div>

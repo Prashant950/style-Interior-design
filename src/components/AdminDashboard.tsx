@@ -55,7 +55,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [activeTab, setActiveTab] = useState<'analytics' | 'leads' | 'projects' | 'services' | 'settings'>('analytics');
   
   // Auth Form State
-  const [email, setEmail] = useState('admin@stylewelldyd.com');
+  const [email, setEmail] = useState('admin@acmeinteriors.in');
   const [password, setPassword] = useState('admin123');
   const [authError, setAuthError] = useState('');
 
@@ -85,11 +85,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   // Handle Admin Login
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === 'admin@stylewelldyd.com' && password === 'admin123') {
+    if ((email === 'admin@acmeinteriors.in' || email === 'admin@stylewelldyd.com') && password === 'admin123') {
       setIsAuthenticated(true);
       setAuthError('');
     } else {
-      setAuthError('Invalid credentials. Use demo: admin@stylewelldyd.com / admin123');
+      setAuthError('Invalid credentials. Demo: admin@acmeinteriors.in / admin123');
     }
   };
 
@@ -952,7 +952,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </a>
                 <a
                   href={`https://wa.me/${selectedLead.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                    `Hello ${selectedLead.name}, this is Style Well DYD interior design studio in Lucknow regarding your inquiry.`
+                    `Hello ${selectedLead.name}, this is Acme Interiors design studio in Lucknow regarding your inquiry.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"

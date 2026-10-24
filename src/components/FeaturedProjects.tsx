@@ -51,85 +51,123 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
           </p>
         </div>
 
-        {/* Interactive Filter Tabs (Buttons with click handlers per skill) */}
+        {/* Interactive Filter Tabs (Buttons with counts) */}
         <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap transition-all border cursor-pointer ${
-                selectedCategory === cat
-                  ? 'bg-[#c5a059] text-black border-[#c5a059]'
-                  : 'bg-[#121418] text-neutral-400 border-white/10 hover:border-white/30 hover:text-white'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const count = cat === 'All'
+              ? publishedProjects.length
+              : publishedProjects.filter((p) => p.category === cat).length;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3.5 sm:px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium whitespace-nowrap transition-all border cursor-pointer flex items-center gap-2 ${
+                  selectedCategory === cat
+                    ? 'bg-[#c5a059] text-black border-[#c5a059] shadow-lg shadow-[#c5a059]/20 font-bold'
+                    : 'bg-[#14161c] text-neutral-400 border-white/10 hover:border-white/30 hover:text-white'
+                }`}
+              >
+                <span>{cat}</span>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
+                  selectedCategory === cat ? 'bg-black/25 text-black' : 'bg-white/10 text-neutral-400'
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Projects Architectural Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+        {/* Projects Architectural Grid - Fully Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              onClick={() => onSelectProject(project)}
-              className="group cursor-pointer bg-[#121418] border border-white/10 hover:border-[#c5a059]/60 transition-all duration-500 overflow-hidden flex flex-col justify-between"
+              className="group bg-[#121418] border border-white/10 hover:border-[#c5a059]/60 transition-all duration-300 rounded-xl overflow-hidden flex flex-col justify-between shadow-xl hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             >
               {/* Image Container with zoom */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900">
+              <div 
+                onClick={() => onSelectProject(project)}
+                className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-neutral-900 cursor-pointer"
+              >
                 <img
                   src={project.coverImage}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500 ease-out"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Dark Hover Scrim */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-60 group-hover:opacity-85 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-75 group-hover:opacity-90 transition-opacity" />
 
-                {/* Floating Category tag - clean unboxed per skill */}
-                <div className="absolute top-4 left-4 text-[11px] font-mono tracking-wider text-white/90 bg-black/50 backdrop-blur-md px-2 py-1">
+                {/* Floating Category tag */}
+                <div className="absolute top-3 left-3 text-[10px] font-mono tracking-wider text-white bg-black/70 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
                   {project.category} · {project.style}
                 </div>
 
+                {project.budgetRange && (
+                  <div className="absolute top-3 right-3 text-[10px] font-mono tracking-wider text-[#e0c58e] bg-black/70 backdrop-blur-md px-2.5 py-1 rounded border border-[#c5a059]/30">
+                    {project.budgetRange}
+                  </div>
+                )}
+
                 {/* View Project Pill on hover */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="px-4 py-2 bg-[#c5a059] text-black font-semibold text-xs uppercase tracking-widest flex items-center gap-2 shadow-2xl">
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>View Project</span>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <span className="px-4 py-2 bg-[#c5a059] text-black font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-2xl rounded-sm">
+                    <Eye className="w-4 h-4" />
+                    <span>Inspect 3D Views</span>
                   </span>
                 </div>
               </div>
 
               {/* Project Card Metadata */}
-              <div className="p-6">
-                <div className="flex items-center gap-2 text-xs text-[#c5a059] mb-2 font-mono">
-                  <MapPin className="w-3 h-3" />
-                  <span>{project.location}</span>
-                  {project.budgetRange && (
-                    <>
-                      <span>·</span>
-                      <span>{project.budgetRange}</span>
-                    </>
+              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-1 text-[11px] text-[#c5a059] mb-1.5 font-mono">
+                    <MapPin className="w-3.5 h-3.5 shrink-0" />
+                    <span className="truncate">{project.location}</span>
+                  </div>
+
+                  <h3 
+                    onClick={() => onSelectProject(project)}
+                    className="text-base sm:text-lg font-serif text-white hover:text-[#c5a059] transition-colors line-clamp-1 mb-2 cursor-pointer"
+                    title={project.title}
+                  >
+                    {project.title}
+                  </h3>
+
+                  <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-3">
+                    {project.description}
+                  </p>
+
+                  {project.features && project.features.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {project.features.slice(0, 2).map((feat, i) => (
+                        <span key={i} className="text-[10px] bg-white/5 text-neutral-300 border border-white/5 px-2 py-0.5 rounded font-sans">
+                          {feat}
+                        </span>
+                      ))}
+                    </div>
                   )}
                 </div>
 
-                <h3 className="text-lg font-serif text-white group-hover:text-[#c5a059] transition-colors line-clamp-1 mb-2">
-                  {project.title}
-                </h3>
+                {/* Dual Touch Actions for Mobile & Web */}
+                <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => onSelectProject(project)}
+                    className="py-2 px-2.5 bg-[#c5a059]/15 hover:bg-[#c5a059] text-[#c5a059] hover:text-black border border-[#c5a059]/40 hover:border-[#c5a059] rounded text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                  >
+                    <Eye className="w-3.5 h-3.5 shrink-0" />
+                    <span>View Photos</span>
+                  </button>
 
-                <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-4">
-                  {project.description}
-                </p>
-
-                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs">
-                  <span className="text-neutral-500 font-mono text-[11px]">
-                    {project.completionDate || 'Recent'}
-                  </span>
-                  <span className="text-[#c5a059] group-hover:underline flex items-center gap-1">
-                    <span>Inspect Details</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </span>
+                  <button
+                    onClick={() => onOpenEnquiry(project.title)}
+                    className="py-2 px-2.5 bg-[#1a1c24] hover:bg-[#252834] text-white hover:text-[#c5a059] border border-white/10 hover:border-[#c5a059]/40 rounded text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#c5a059] shrink-0" />
+                    <span>Get Quote</span>
+                  </button>
                 </div>
               </div>
             </div>

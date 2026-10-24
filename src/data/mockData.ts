@@ -1,21 +1,101 @@
 import { Project, Service, GalleryItem, Testimonial, EnquiryLead, BusinessSettings } from '../types';
 
 export const initialSettings: BusinessSettings = {
-  businessName: 'STYLE WELL DYD',
-  hindiName: 'स्टाइल वेल डाइड',
-  tagline: 'Transforming Spaces. Creating Experiences.',
-  phone: '+91 95065 36127',
-  whatsapp: '+919506536127',
-  email: 'info@stylewelldyd.com',
-  instagram: '@stylewelldyd',
-  instagramUrl: 'https://www.instagram.com/stylewelldyd?r=nametag',
-  address: 'Ne IIM Rd, near S.M Hospital, Madiyanva, Lucknow, Uttar Pradesh 226020',
-  city: 'Lucknow, Uttar Pradesh',
-  hours: '9:30 AM – 9:30 PM (Monday – Sunday)',
-  googleMapsUrl: 'https://maps.google.com/?q=Ne+IIM+Rd+near+SM+Hospital+Madiyanva+Lucknow+Uttar+Pradesh+226020'
+  businessName: 'Acme Interiors',
+  hindiName: 'एसीएमई इंटीरियर्स',
+  tagline: 'Crafting Timeless Luxury Spaces in Lucknow',
+  phone: '086010 50054',
+  whatsapp: '+918601050054',
+  email: 'info@acmeinteriors.in',
+  instagram: '@acmeinteriors_lucknow',
+  instagramUrl: 'https://www.instagram.com/acmeinteriors',
+  address: 'Sitapur Rd, opposite Dilkash Plaza, near vaaga hospital, Purania, Sector K, Aliganj, Lucknow, Uttar Pradesh 226024',
+  city: 'Aliganj, Lucknow, Uttar Pradesh',
+  hours: 'Open · Closes 7 am Sun (Mon–Sun Open)',
+  googleMapsUrl: 'https://maps.google.com/?q=Acme+Interiors+Sitapur+Rd+opposite+Dilkash+Plaza+near+vaaga+hospital+Purania+Sector+K+Aliganj+Lucknow+Uttar+Pradesh+226024',
+  rating: 5.0,
+  reviewCount: 5,
+  category: 'Interior designer',
+  landmark: 'Located in: VAGA Hospital - Multispeciality Hospital',
+  plusCode: 'VWXQ+65 Lucknow, Uttar Pradesh'
 };
 
 export const initialProjects: Project[] = [
+  {
+    id: 'proj-acme-office',
+    title: 'Acme Executive Office Studio & Workstation Suite',
+    slug: 'acme-executive-office-studio',
+    category: 'Commercial',
+    style: 'Modern Minimalist & Acoustic',
+    location: 'Opposite Dilkash Plaza, Aliganj, Lucknow',
+    description: 'Turnkey interior architecture for an executive workspace featuring heavy-gauge metal shutter integration, ergonomic modular desks, and flush linear false ceiling lighting.',
+    concept: 'Harmonizing high-efficiency corporate productivity with architectural minimalism, sound dampening acoustics, and warm ambient illumination.',
+    budgetRange: '₹10–20 Lakh',
+    completionDate: 'March 2026',
+    coverImage: '/images/acme/office-studio-interior.png',
+    galleryImages: [
+      '/images/acme/office-studio-interior.png',
+      '/images/acme/logo-signage.png',
+      '/images/acme/designer-false-ceiling.png'
+    ],
+    beforeImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+    afterImage: '/images/acme/office-studio-interior.png',
+    materials: ['Acoustic Ceiling Tiles', 'Toughened Matte Acrylic', 'High-Density Pre-laminated Boards', 'Linear Aluminum Channels'],
+    colorPalette: ['#121417', '#E5A93C', '#E2DCD5', '#4A4C50'],
+    features: ['Custom modular office workstation', 'Flush linear track lights & dual ceiling fans', 'Integrated electrical conduit management', '3D illuminated exterior brand signage'],
+    featured: true,
+    status: 'published'
+  },
+  {
+    id: 'proj-acme-tv-garden',
+    title: 'Purania Luxury TV Media Wall & Biophilic Garden Niche',
+    slug: 'purania-luxury-tv-media-wall',
+    category: 'Living Room',
+    style: 'Contemporary Biophilic Luxury',
+    location: 'Purania, Sector K, Aliganj, Lucknow',
+    description: 'Bespoke entertainment wall featuring acoustic fluted vertical wooden louvers, white floating console with display ledges, and a recessed vertical garden with ambient botanical illumination.',
+    concept: 'Merging natural greenery with warm acoustic fluted timber and golden damask textures to bring serene outdoor tranquility into the modern living room.',
+    budgetRange: '₹5–10 Lakh',
+    completionDate: 'February 2026',
+    coverImage: '/images/acme/tv-unit-paneling.png',
+    galleryImages: [
+      '/images/acme/tv-unit-paneling.png',
+      '/images/acme/vertical-garden-wall.png',
+      '/images/acme/designer-false-ceiling.png'
+    ],
+    beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+    afterImage: '/images/acme/tv-unit-paneling.png',
+    materials: ['Acoustic Fluted Louvers', 'Imported Gold Damask Wallpaper', 'Preserved Botanical Foliage', 'Matte White Acrylic Console'],
+    colorPalette: ['#2E4A35', '#C5A059', '#FFFFFF', '#1C1E21'],
+    features: ['Concealed cable wire ducting', 'Recessed green garden niche with LED spotlights', 'Cantilevered floating display shelves', 'Gold damask luxury wallpaper backdrop'],
+    featured: true,
+    status: 'published'
+  },
+  {
+    id: 'proj-acme-ceiling',
+    title: 'Terracotta POP False Ceiling & Warm Architectural Coves',
+    slug: 'terracotta-pop-false-ceiling',
+    category: 'Residential',
+    style: 'Contemporary POP & Cove Architecture',
+    location: 'Sector K, Aliganj, Lucknow',
+    description: 'Multi-tiered designer POP false ceiling featuring warm terracotta accents, perimeter cove lighting profiles, high-CRI recessed spotlights, and acoustic fan reinforcement.',
+    concept: 'Creating dimensional ceiling depth with warm ambient illumination that highlights Lucknow home architecture without glare.',
+    budgetRange: '₹5–10 Lakh',
+    completionDate: 'January 2026',
+    coverImage: '/images/acme/designer-false-ceiling.png',
+    galleryImages: [
+      '/images/acme/designer-false-ceiling.png',
+      '/images/acme/office-studio-interior.png',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80'
+    ],
+    beforeImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
+    afterImage: '/images/acme/designer-false-ceiling.png',
+    materials: ['Saint-Gobain Gyproc POP', 'Linear LED Cove Profiles', 'High-CRI Warm Spotlights', 'Anti-fungal Satin Emulsion'],
+    colorPalette: ['#E06D39', '#F4F4F0', '#C5A059', '#1A1C20'],
+    features: ['Dual-level suspended ceiling design', 'Concealed warm cove illumination (3000K)', 'Integrated high-efficiency ceiling fans', 'Mirror finished archway profile borders'],
+    featured: true,
+    status: 'published'
+  },
   {
     id: 'proj-1',
     title: 'The Aliganj Penthouse Residence',
@@ -64,7 +144,7 @@ export const initialProjects: Project[] = [
     materials: ['Limewash Texture Plaster', 'Natural White Oak', 'Raw Linen Weaves', 'Honed Travertine'],
     colorPalette: ['#ECE7DF', '#B2987E', '#3D3C3A', '#8F857D'],
     features: ['Curved bespoke room dividers', 'Low-profile Japanese style seating', 'Recessed floor up-lights'],
-    featured: true,
+    featured: false,
     status: 'published'
   },
   {
@@ -89,74 +169,6 @@ export const initialProjects: Project[] = [
     materials: ['Anti-fingerprint Matte Charcoal Acrylic', 'Calacatta Gold Quartz', 'Brushed Copper Channels'],
     colorPalette: ['#1C1E21', '#E7DFD5', '#D4AF37'],
     features: ['Full Blum soft-close fittings', 'Integrated downdraft extractor', 'Bespoke spice pull-outs', 'Breakfast peninsula with 3 barstools'],
-    featured: true,
-    status: 'published'
-  },
-  {
-    id: 'proj-4',
-    title: 'Hazratganj Executive Legal Chambers',
-    slug: 'hazratganj-executive-legal-chambers',
-    category: 'Commercial',
-    style: 'Classical Contemporary',
-    location: 'Hazratganj, Lucknow',
-    description: 'Turnkey interior architecture for a prestigious senior advocate suite featuring soundproof acoustic double-glazed partitions, custom library wall, and client salon.',
-    concept: 'Timeless prestige meets ergonomic corporate function with warm teak woodwork and brass joinery.',
-    budgetRange: '₹10–20 Lakh',
-    completionDate: 'December 2025',
-    coverImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80'
-    ],
-    materials: ['Burma Teak Veneer', 'Top-grain Cognac Leather', 'Frosted Fluted Glass', 'Brushed Bronze Trim'],
-    colorPalette: ['#282522', '#8C5E3C', '#E2DCD5'],
-    features: ['12-person custom conference table', 'Concealed AV screen cabinet', 'Private washroom suite'],
-    featured: true,
-    status: 'published'
-  },
-  {
-    id: 'proj-5',
-    title: 'Indira Nagar Master Bedroom Suite',
-    slug: 'indira-nagar-master-suite',
-    category: 'Bedroom',
-    style: 'Luxury Modern',
-    location: 'Indira Nagar, Lucknow',
-    description: 'Serene master retreat featuring a custom upholstered velvet headboard wall, walk-in dressing wardrobe with sensor lighting, and private reading nook.',
-    concept: 'Creating an intimate haven of relaxation with soft indirect lighting and warm tactile textiles.',
-    budgetRange: '₹5–10 Lakh',
-    completionDate: 'January 2026',
-    coverImage: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=80'
-    ],
-    materials: ['Channel-Tufted Micro-Suede', 'Smoked Bronze Mirrors', 'Chevron Engineered Oak'],
-    colorPalette: ['#1F2124', '#D4AF37', '#DBD3C7'],
-    features: ['Sensor-activated wardrobe lights', 'Integrated reading sconces', 'Bespoke vanity dresser'],
-    featured: false,
-    status: 'published'
-  },
-  {
-    id: 'proj-6',
-    title: 'Jankipuram Complete Home Transformation',
-    slug: 'jankipuram-home-renovation',
-    category: 'Renovation',
-    style: 'Contemporary Indian',
-    location: 'Jankipuram, Lucknow',
-    description: 'Complete interior overhaul of a 20-year-old Lucknow kothi into a bright, airy, modern sanctuary with upgraded plumbing, electricals, and open floor planning.',
-    concept: 'Honoring traditional spatial proportions while infusing modern minimalist materials and ample daylight.',
-    budgetRange: '₹20 Lakh+',
-    completionDate: 'February 2026',
-    coverImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80'
-    ],
-    beforeImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
-    materials: ['Natural Jaisalmer Accents', 'Vitrified Large Slab Tiles', 'Teak Paneling'],
-    colorPalette: ['#2B2A27', '#E5DDD3', '#C5A059'],
-    features: ['Wall removal for open layout', 'Complete false ceiling overhaul', 'All-new modular kitchen'],
     featured: false,
     status: 'published'
   }
@@ -168,7 +180,7 @@ export const initialServices: Service[] = [
     title: 'Residential Interior Design',
     slug: 'residential-interiors',
     shortDesc: 'Bespoke end-to-end interior design for villas, penthouses, and apartments across Lucknow.',
-    fullDesc: 'From initial spatial planning and 3D architectural renders to custom furniture crafting, lighting curation, and turnkey execution. We tailor every square foot to match your lifestyle.',
+    fullDesc: 'From initial spatial planning and 3D architectural renders to custom furniture crafting, lighting curation, and turnkey execution. Acme Interiors tailors every square foot to match your lifestyle in Lucknow.',
     features: [
       'Comprehensive 2D & 3D space layouts',
       'Custom furniture & false ceiling planning',
@@ -176,7 +188,7 @@ export const initialServices: Service[] = [
       'Turnkey project management & execution'
     ],
     process: ['Site Assessment', 'Concept Boards', '3D Photorealistic Views', 'Execution & Quality Handover'],
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/acme/tv-unit-paneling.png',
     active: true,
     order: 1
   },
@@ -199,18 +211,18 @@ export const initialServices: Service[] = [
   },
   {
     id: 'srv-3',
-    title: 'Wall Interior & Decorative Paneling',
+    title: 'Wall Paneling & Vertical Green Gardens',
     slug: 'wall-interior-paneling',
-    shortDesc: 'Acoustic fluted louvers, charcoal panels, CNC jali, luxury wallpaper textures & Italian stone wall cladding.',
-    fullDesc: 'Transform dull walls into striking architectural focal points. We install acoustic fluted wooden louvers, high-density charcoal panels, imported metallic wallpaper, CNC brass inlays, and customized bed-back cushioning.',
+    shortDesc: 'Acoustic fluted louvers, biophilic vertical garden walls, charcoal panels, luxury wallpaper & TV media consoles.',
+    fullDesc: 'Transform dull walls into striking architectural focal points. Acme Interiors installs acoustic fluted wooden louvers, preserved vertical indoor gardens, high-density charcoal panels, imported metallic wallpaper, and customized media units.',
     features: [
-      'Fluted WPC & charcoal louvers paneling',
-      'Acoustic wooden slats with sound dampening',
-      'CNC jali partitions with PVD brass inlays',
-      'Textured Italian stucco, wallpaper & PU coatings'
+      'Fluted acoustic louvers with sound dampening',
+      'Indoor vertical botanical garden niche with LED accents',
+      'Imported gold & damask designer wallpaper',
+      'Custom floating media consoles with concealed ducting'
     ],
     process: ['Wall Health & Alignment Check', 'Texture & Paneling Mockups', 'Precision Laser Installation', 'Edge Finishing & Sealing'],
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/acme/vertical-garden-wall.png',
     active: true,
     order: 3
   },
@@ -219,20 +231,37 @@ export const initialServices: Service[] = [
     title: 'False Ceiling & Architectural Lighting',
     slug: 'false-ceiling-lighting',
     shortDesc: 'Designer Gyproc ceilings with magnetic track lights, warm cove LED profiles & smart automation dimming.',
-    fullDesc: 'Elevate your vertical space with seamless Saint-Gobain Gyproc false ceilings, concealed warm cove lighting channels, linear magnetic track spots, and chandelier reinforcement boxes designed for low heat and high longevity.',
+    fullDesc: 'Elevate your vertical space with seamless Saint-Gobain Gyproc false ceilings, multi-tiered terracotta pop coves, concealed warm cove lighting channels, linear magnetic track spots, and chandelier reinforcement.',
     features: [
       'Saint-Gobain Gyproc moisture-resistant false ceiling',
-      'Magnetic linear track lighting & spotlight grids',
-      'Concealed warm cove LED strips (Philips/Coble)',
+      'Terracotta & warm accent pop cove styling',
+      'Concealed warm cove LED strips (Philips/Coble 3000K)',
       'Acoustic perimeter drop ceilings for AC ducting'
     ],
     process: ['Laser Grid Dimensioning', 'Framing & Conduit Laying', 'Gypsum Board Fixing', 'Joint Taping & Paint Finish'],
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/acme/designer-false-ceiling.png',
     active: true,
     order: 4
   },
   {
     id: 'srv-5',
+    title: 'Commercial & Office Studio Interiors',
+    slug: 'commercial-interiors',
+    shortDesc: 'Inspiring workspaces, executive cabins, reception identity walls, clinics, and retail showrooms in Lucknow.',
+    fullDesc: 'Boost workplace productivity and impress your clients. Acme Interiors builds brand-aligned commercial environments balancing acoustics, ergonomic task zones, collaborative lounges, and 3D luminous signage.',
+    features: [
+      'Reception areas & 3D illuminated brand signage',
+      'Executive cabins & boardroom audio-visual design',
+      'Acoustic ceiling baffles & modular task desks',
+      'HVAC, fire-safety, and electrical compliance'
+    ],
+    process: ['Workflow & Headcount Analysis', 'Acoustic & Zoning Layout', 'Phased Fit-out', 'Zero-Downtime Handover'],
+    image: '/images/acme/office-studio-interior.png',
+    active: true,
+    order: 5
+  },
+  {
+    id: 'srv-6',
     title: 'Luxury Bedroom & Modular Wardrobes',
     slug: 'bedroom-interiors',
     shortDesc: 'Sanctuary bedroom suites, walk-in closets, lacquered glass sliding wardrobes & ambient bed-backs.',
@@ -246,120 +275,50 @@ export const initialServices: Service[] = [
     process: ['Lifestyle & Wardrobe Audit', '3D Walkthrough', 'Precision Fabrication', 'White-glove Assembly'],
     image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80',
     active: true,
-    order: 5
-  },
-  {
-    id: 'srv-6',
-    title: 'Living Room & TV Media Consoles',
-    slug: 'living-room-interiors',
-    shortDesc: 'Statement living rooms with accent media walls, Italian marble consoles, fluted paneling & art styling.',
-    fullDesc: 'The centerpiece of every luxury home. We curate harmonious color palettes, Italian sofa sets, designer chandeliers, wallpaper textures, and motorized curtains that leave lasting impressions.',
-    features: [
-      'Floating TV console & acoustic fluted panel walls',
-      'Curated furniture sourcing & custom upholstery',
-      'Designer lighting, sconces & statement chandeliers',
-      'Wall textures, moldings & art placement'
-    ],
-    process: ['Spatial Focal Point Planning', 'Fabric & Material Moodboard', 'Procurement & Styling', 'Final Reveal'],
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
-    active: true,
     order: 6
-  },
-  {
-    id: 'srv-7',
-    title: 'Luxury Bathrooms & Vanities',
-    slug: 'bathroom-vanities',
-    shortDesc: 'Bespoke floating quartz vanities, LED defogging mirrors, glass shower cubicles & luxury sanitary fittings.',
-    fullDesc: 'Turn ordinary bathrooms into spa-like private sanctuaries. We design custom floating quartz vanities, LED backlit anti-fog mirrors, frameless toughened glass partitions, and concealed Grohe/Kohler thermostatic valves.',
-    features: [
-      'Custom floating waterproof vanities with quartz tops',
-      'LED backlit defogger touch mirrors',
-      'Frameless toughened glass shower enclosures',
-      'Concealed diverters, rain showers & niche LED lighting'
-    ],
-    process: ['Plumbing & Gradient Audit', 'Sanitary & Tile Selection', 'Waterproofing Test', 'Precision Installation'],
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
-    active: true,
-    order: 7
-  },
-  {
-    id: 'srv-8',
-    title: 'Flooring & Italian Marble Solutions',
-    slug: 'flooring-marble',
-    shortDesc: 'Italian Statuario marble laying, mirror diamond polishing, large vitrified tiles & wooden flooring.',
-    fullDesc: 'Flooring is the foundation of luxury. We provide expert laying of imported Italian marble, epoxy joint filling, multi-stage diamond mirror polishing, and seamless wooden herringbone laminate installations.',
-    features: [
-      'Imported Italian Statuario & Bottochino marble laying',
-      'Diamond pad mirror gloss polishing & crystallization',
-      'Large format 4x2 & 6x4 ft glazed vitrified tile flooring',
-      'Wooden laminate & herringbone parquet flooring'
-    ],
-    process: ['Sub-floor Leveling & Screed', 'Dry-lay Pattern Matching', 'Epoxy Grouted Laying', 'Diamond Crystallization Polish'],
-    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80',
-    active: true,
-    order: 8
-  },
-  {
-    id: 'srv-9',
-    title: 'Turnkey Renovation & Remodeling',
-    slug: 'renovation-remodeling',
-    shortDesc: 'Complete revitalization of older properties, civil repairs, modern upgrades, and structural redesign.',
-    fullDesc: 'Transform dated residences into modern masterpieces without the stress of managing individual contractors. We handle civil modifications, waterproofing, tile replanning, and aesthetic renewal.',
-    features: [
-      'Civil modifications & wall openings',
-      'Modern electrical rewiring & plumbing overhauls',
-      'Flooring upgrade with Italian marble or vitrified slabs',
-      'Designer false ceilings & ambient cove lighting'
-    ],
-    process: ['Structural Health Inspection', 'Demolition & Civil Redesign', 'Refurbishment', 'Final Polish & Handover'],
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
-    active: true,
-    order: 9
-  },
-  {
-    id: 'srv-10',
-    title: 'Commercial & Office Interiors',
-    slug: 'commercial-interiors',
-    shortDesc: 'Inspiring workspaces, corporate offices, clinics, retail showrooms, and luxury hospitality lounges.',
-    fullDesc: 'Boost workplace productivity and impress your clients. We build brand-aligned commercial environments balancing acoustics, ergonomic task zones, collaborative lounges, and durable finishes.',
-    features: [
-      'Reception areas & brand identity feature walls',
-      'Executive cabins & boardroom audio-visual design',
-      'Acoustic ceiling baffles & sound-dampened meeting pods',
-      'HVAC, fire-safety, and electrical compliance'
-    ],
-    process: ['Workflow & Headcount Analysis', 'Acoustic & Zoning Layout', 'Phased Fit-out', 'Zero-Downtime Handover'],
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    active: true,
-    order: 10
-  },
-  {
-    id: 'srv-11',
-    title: 'Commercial Grid False Ceiling & Acoustic Tiles',
-    slug: 'office-grid-ceiling',
-    shortDesc: 'Modular 2x2 / 2x4 ft acoustic grid ceilings, Armstrong/Gyproc mineral fiber tiles & integrated square LED panels.',
-    fullDesc: 'Specialized modular grid ceiling installations engineered for modern offices, corporate conference halls, IT workspaces, hospitals, and educational facilities across Lucknow. We install standard 2x2 and 2x4 ft Armstrong and Saint-Gobain acoustic tiles, heavy-gauge T-grids, flush-mounted LED panel lights, and acoustic insulation for superior noise reduction and easy overhead utility maintenance.',
-    features: [
-      '2x2 & 2x4 ft Armstrong / Saint-Gobain Mineral Fiber Tiles',
-      'Integrated Flush 2x2 ft LED Panel Lights & Diffusers',
-      'High Sound Absorption (NRC 0.65 - 0.75) & Anti-Sag Performance',
-      'Concealed & Exposed T-Grid Frames with Quick Maintenance Access'
-    ],
-    process: ['Laser Grid Layout & Height Alignment', 'Main Runner & Cross-Tee Framework Installation', 'LED Panel Electrical Wiring', 'Tile Laying & Clean Handover'],
-    image: '/images/office-grid-ceiling.jpg',
-    active: true,
-    order: 11
   }
 ];
 
 export const initialGallery: GalleryItem[] = [
   {
-    id: 'gal-office-ceiling',
-    title: 'Modular Acoustic Grid False Ceiling & LED Panels',
+    id: 'gal-acme-signage',
+    title: 'Acme Interiors 3D Illuminated LED Backlit Signage',
+    category: 'Commercial',
+    imageUrl: '/images/acme/logo-signage.png',
+    projectTitle: 'Acme Interiors Brand Studio',
+    location: 'Sitapur Rd, Aliganj, Lucknow'
+  },
+  {
+    id: 'gal-acme-tv',
+    title: 'Fluted Acoustic Louvers & Modern TV Media Console',
+    category: 'Living Room',
+    imageUrl: '/images/acme/tv-unit-paneling.png',
+    projectTitle: 'Purania Luxury Residence',
+    location: 'Sector K, Aliganj, Lucknow'
+  },
+  {
+    id: 'gal-acme-garden',
+    title: 'Biophilic Vertical Green Garden Niche & Damask Wall',
+    category: 'Luxury',
+    imageUrl: '/images/acme/vertical-garden-wall.png',
+    projectTitle: 'Aliganj Villa Interior',
+    location: 'Near Vaga Hospital, Lucknow'
+  },
+  {
+    id: 'gal-acme-office',
+    title: 'Executive Workstation Suite & Linear Ceiling Lighting',
+    category: 'Office',
+    imageUrl: '/images/acme/office-studio-interior.png',
+    projectTitle: 'Acme Commercial Atelier',
+    location: 'Opposite Dilkash Plaza, Lucknow'
+  },
+  {
+    id: 'gal-acme-ceiling',
+    title: 'Terracotta POP False Ceiling with Warm LED Profiles',
     category: 'Ceiling',
-    imageUrl: '/images/office-grid-ceiling.jpg',
-    projectTitle: 'Cyber Tower Corporate Office',
-    location: 'Vibhuti Khand, Gomti Nagar, Lucknow'
+    imageUrl: '/images/acme/designer-false-ceiling.png',
+    projectTitle: 'Aliganj Designer Living Pavilion',
+    location: 'Purania, Aliganj, Lucknow'
   },
   {
     id: 'gal-1',
@@ -392,70 +351,58 @@ export const initialGallery: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
     projectTitle: 'Gomti Nagar Minimalist Villa',
     location: 'Gomti Nagar, Lucknow'
-  },
-  {
-    id: 'gal-5',
-    title: 'Executive Legal Boardroom with Fluted Glass',
-    category: 'Office',
-    imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    projectTitle: 'Hazratganj Chambers',
-    location: 'Hazratganj, Lucknow'
-  },
-  {
-    id: 'gal-6',
-    title: 'Open Architectural Dining Pavilion',
-    category: 'Luxury',
-    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-    projectTitle: 'Vipul Khand Residence',
-    location: 'Gomti Nagar, Lucknow'
-  },
-  {
-    id: 'gal-7',
-    title: 'Modern Japandi Bedroom with Warm Sconces',
-    category: 'Bedroom',
-    imageUrl: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80',
-    projectTitle: 'Eldeco Green Retreat',
-    location: 'Lucknow'
-  },
-  {
-    id: 'gal-8',
-    title: 'Custom Wine & Beverage Console Bar',
-    category: 'Living Room',
-    imageUrl: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80',
-    projectTitle: 'Cantt Officers Bungalow',
-    location: 'Lucknow Cantt'
   }
 ];
 
 export const initialTestimonials: Testimonial[] = [
   {
     id: 't-1',
-    clientName: 'Er. Rajeshwar Verma',
-    location: 'Gomti Nagar, Lucknow',
-    projectType: '4BHK Villa Turnkey Interior',
+    clientName: 'Dr. Arvind Tandon',
+    location: 'Sector K, Aliganj, Lucknow',
+    projectType: 'Living Room & Biophilic Garden TV Wall',
     rating: 5,
-    review: 'Style Well DYD turned our raw duplex into a breathtaking home. Their precision in modular kitchen cabinetry and ceiling lighting exceeded our expectations. The team delivered on schedule without quality compromises.',
-    date: 'February 2026',
+    review: 'Acme Interiors did an extraordinary job on our Aliganj residence. The fluted wooden paneling and indoor vertical garden wall look even more stunning than in the 3D designs. Highly professional, punctual, and top-tier craftsmanship!',
+    date: 'March 2026',
     active: true
   },
   {
     id: 't-2',
-    clientName: 'Dr. Smita Mehrotra',
-    location: 'Mahanagar, Lucknow',
-    projectType: 'Modular Kitchen & Master Suite',
+    clientName: 'Mrs. Sunita Agarwal',
+    location: 'Purania, Aliganj, Lucknow',
+    projectType: 'Complete Modular Kitchen & POP False Ceiling',
     rating: 5,
-    review: 'Very professional, transparent in pricing, and creative. The 3D designs were identical to what was executed on-site. The fluted wood paneling and concealed wardrobe lights give our bedroom a 5-star hotel feel.',
-    date: 'January 2026',
+    review: 'Located right opposite Dilkash Plaza, Acme Interiors is without doubt the best interior designer in Aliganj. Their attention to detail on our false ceiling lighting and modular kitchen was flawless. Transparent pricing and 5-star service throughout!',
+    date: 'February 2026',
     active: true
   },
   {
     id: 't-3',
-    clientName: 'Adv. Alok Srivastava',
-    location: 'Hazratganj, Lucknow',
-    projectType: 'Corporate Law Chambers',
+    clientName: 'Er. Vivek Rastogi',
+    location: 'Sitapur Road, Lucknow',
+    projectType: 'Executive Office & Studio Fit-out',
     rating: 5,
-    review: 'From acoustic insulation to custom teak conference furniture, Style Well DYD delivered world-class office interiors. Clients constantly compliment the ambiance and privacy.',
+    review: 'From the 3D architectural renders to turnkey completion, Acme Interiors executed our commercial office space near Vaga Hospital brilliantly. The illuminated signage and modern linear lighting create a world-class impression on clients.',
+    date: 'January 2026',
+    active: true
+  },
+  {
+    id: 't-4',
+    clientName: 'Aditya Srivastava',
+    location: 'Aliganj, Lucknow',
+    projectType: 'Turnkey Villa Renovation',
+    rating: 5,
+    review: '5.0-star rating well deserved! Acme Interiors transformed our ancestral home into a luxurious modern haven. The team is courteous, fast, and uses genuine premium materials.',
     date: 'December 2025',
+    active: true
+  },
+  {
+    id: 't-5',
+    clientName: 'Pooja Mehrotra',
+    location: 'Sector K, Lucknow',
+    projectType: 'Bedroom Interiors & Wardrobes',
+    rating: 5,
+    review: 'Superb design sensibilities! The false ceiling work and customized wardrobes have given our home a 5-star hotel ambiance. Thank you Acme Interiors!',
+    date: 'November 2025',
     active: true
   }
 ];
@@ -464,16 +411,16 @@ export const initialLeads: EnquiryLead[] = [
   {
     id: 'lead-101',
     name: 'Prashant Dixit',
-    phone: '098390 12345',
+    phone: '086010 50054',
     email: 'prashant.dixit@gmail.com',
     projectType: 'Home Interior',
-    propertyType: '3BHK Apartment (Omaxe Hazratganj)',
-    location: 'Gomti Nagar Extension, Lucknow',
+    propertyType: '3BHK Apartment (Aliganj)',
+    location: 'Sector K, Aliganj, Lucknow',
     approxBudget: '₹10–20 Lakh',
     preferredContact: 'WhatsApp',
-    message: 'Looking for turnkey interior design including modular kitchen, master bedroom wardrobe, and false ceiling with cove lights.',
+    message: 'Looking for turnkey interior design including TV media wall, modular kitchen, and false ceiling with cove lights.',
     status: 'Site Visit Scheduled',
-    notes: ['Initial phone consultation completed on Monday.', 'Site visit confirmed for Thursday 11:30 AM.'],
+    notes: ['Initial phone consultation completed.', 'Site visit confirmed for Thursday 11:30 AM.'],
     createdAt: '2026-03-24T10:15:00Z'
   },
   {
@@ -483,28 +430,13 @@ export const initialLeads: EnquiryLead[] = [
     email: 'ananya.k@outlook.com',
     projectType: 'Modular Kitchen',
     propertyType: 'Independent Villa',
-    location: 'Aliganj, Lucknow',
+    location: 'Purania, Lucknow',
     approxBudget: '₹5–10 Lakh',
     preferredContact: 'Phone',
     message: 'Want to renovate existing kitchen with acrylic cabinets and quartz countertop. Need 3D visualization first.',
     status: 'New',
     notes: ['Lead submitted through website consultation form.'],
     createdAt: '2026-03-26T14:40:00Z'
-  },
-  {
-    id: 'lead-103',
-    name: 'Vikramaditya Rao',
-    phone: '094150 99881',
-    email: 'vikram.rao@fintechcorp.in',
-    projectType: 'Office',
-    propertyType: 'Commercial Space (2,400 sq.ft)',
-    location: 'Vibhuti Khand, Gomti Nagar',
-    approxBudget: '₹20 Lakh+',
-    preferredContact: 'WhatsApp',
-    message: 'New tech corporate office fit-out for 25 work desks, 2 cabins, meeting room and pantry. Urgently needed by next month.',
-    status: 'Proposal Sent',
-    notes: ['Concept layout shared over email and WhatsApp.', 'Follow-up scheduled for Saturday.'],
-    createdAt: '2026-03-22T09:00:00Z'
   }
 ];
 
@@ -515,19 +447,19 @@ export const designStyles = [
     image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80'
   },
   {
-    name: 'Minimalist & Japandi',
-    desc: 'Uncluttered spaces, organic plaster textures, low-profile seating, and calm natural illumination.',
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80'
+    name: 'Biophilic & Contemporary',
+    desc: 'Indoor vertical gardens, natural acoustic louvers, warm terracotta POP ceilings, and soothing natural vibes.',
+    image: '/images/acme/tv-unit-paneling.png'
+  },
+  {
+    name: 'Minimalist & Studio',
+    desc: 'Uncluttered spaces, linear LED profiles, ergonomic workstations, and calm ambient illumination.',
+    image: '/images/acme/office-studio-interior.png'
   },
   {
     name: 'Contemporary Indian',
-    desc: 'Graceful blend of traditional brass accents and rich teakwood with contemporary modern living ergonomics.',
+    desc: 'Graceful blend of traditional warmth and rich textures with contemporary modern living ergonomics.',
     image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    name: 'Urban Scandinavian',
-    desc: 'Pale oak woodwork, cozy linen fabrics, ergonomic functional storage, and soft muted earth tones.',
-    image: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -535,12 +467,12 @@ export const designSteps = [
   {
     number: '01',
     title: 'Consultation & Brief',
-    desc: 'We discuss your aesthetic preferences, functional needs, lifestyle routines, and budget parameters over coffee or call.'
+    desc: 'We discuss your aesthetic preferences, functional needs, lifestyle routines, and budget parameters over coffee or call at our Aliganj studio.'
   },
   {
     number: '02',
-    title: 'On-Site Measurement',
-    desc: 'Our interior architects conduct a comprehensive physical laser survey of your Lucknow property to assess structural beams and lighting.'
+    title: 'On-Site Laser Survey',
+    desc: 'Our interior architects conduct a comprehensive physical laser survey of your Lucknow property to assess structural beams, walls, and lighting.'
   },
   {
     number: '03',

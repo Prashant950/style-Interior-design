@@ -51,42 +51,49 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </button>
 
         {/* Large Cinematic Image Stage */}
-        <div className="relative aspect-[16/9] sm:aspect-[21/9] bg-neutral-950 overflow-hidden">
+        <div className="relative aspect-[16/10] sm:aspect-[21/9] bg-neutral-950 overflow-hidden">
           <img
             src={currentImage}
             alt={project.title}
             className="w-full h-full object-cover transition-all duration-500"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121418] via-transparent to-black/40" />
-
-          {/* Floating Category Info */}
-          <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-mono text-[#c5a059] mb-1">
-                <MapPin className="w-3.5 h-3.5" />
-                <span>{project.location}</span>
-                <span>·</span>
-                <span>{project.category}</span>
-                <span>·</span>
-                <span>{project.style}</span>
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-serif text-white tracking-tight">
-                {project.title}
-              </h2>
-            </div>
-
-            <button
-              onClick={() => {
-                onClose();
-                onOpenEnquiry(project.title);
-              }}
-              className="px-5 py-2.5 bg-[#c5a059] hover:bg-[#d8b46d] text-black font-semibold text-xs uppercase tracking-wider inline-flex items-center gap-2 shrink-0 cursor-pointer"
-            >
-              <span>Inquire This Look</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+          
+          {/* Active Image Indicator Pill */}
+          <div className="absolute top-4 left-4 text-[10px] font-mono tracking-wider text-white bg-black/75 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
+            Photo {activeImageIndex + 1} of {allImages.length}
           </div>
+        </div>
+
+        {/* Responsive Project Header & Direct Inquire Action Bar */}
+        <div className="p-4 sm:p-6 bg-[#15171e] border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+          <div>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#c5a059] mb-1">
+              <span className="flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5" />
+                {project.location}
+              </span>
+              <span>·</span>
+              <span>{project.category}</span>
+              <span>·</span>
+              <span>{project.style}</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-serif text-white tracking-tight leading-tight">
+              {project.title}
+            </h2>
+          </div>
+
+          <button
+            onClick={() => {
+              onClose();
+              onOpenEnquiry(project.title);
+            }}
+            className="px-5 py-2.5 bg-[#c5a059] hover:bg-[#d8b46d] text-black font-bold text-xs uppercase tracking-wider inline-flex items-center justify-center gap-2 shrink-0 cursor-pointer rounded shadow-lg shadow-[#c5a059]/20 active:scale-95 transition-all self-start sm:self-auto w-full sm:w-auto"
+          >
+            <span>Inquire This Look</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </div>
 
         {/* Thumbnail Navigation Bar */}

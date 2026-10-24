@@ -23,7 +23,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ testim
             </h2>
           </div>
           <p className="text-neutral-400 text-xs sm:text-sm max-w-md font-light">
-            Real feedback from homeowners, professionals, and corporate leaders who entrusted their spaces to Style Well DYD.
+            Verified 5.0★ Google reviews from homeowners, professionals, and corporate leaders who entrusted their spaces to Acme Interiors in Aliganj, Lucknow.
           </p>
         </div>
 

@@ -13,27 +13,27 @@ interface TransformationItem {
 const transformations: TransformationItem[] = [
   {
     id: 'trans-1',
-    title: 'The Aliganj Living Space',
-    location: 'Aliganj, Lucknow',
-    scope: 'Raw unplastered hall transformed into an Italian marble & walnut acoustic sanctuary',
+    title: 'Purania TV Media Wall & Garden',
+    location: 'Purania, Sector K, Aliganj, Lucknow',
+    scope: 'Bare wall converted into acoustic fluted timber louvers with floating console and lush indoor green garden niche',
     beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80'
+    afterImage: '/images/acme/tv-unit-paneling.png'
   },
   {
     id: 'trans-2',
-    title: 'Mahanagar Modular Kitchen Overhaul',
-    location: 'Mahanagar, Lucknow',
-    scope: 'Dated 1990s civil counter converted into German Blum soft-close acrylic & quartz island kitchen',
-    beforeImage: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1400&q=80'
+    title: 'Designer Terracotta POP Ceiling',
+    location: 'Sector K, Aliganj, Lucknow',
+    scope: 'Plain concrete slab transformed with multi-tier terracotta POP false ceiling and warm linear cove profiles',
+    beforeImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=80',
+    afterImage: '/images/acme/designer-false-ceiling.png'
   },
   {
     id: 'trans-3',
-    title: 'Jankipuram Kothi Renovation',
-    location: 'Jankipuram, Lucknow',
-    scope: 'Dark partitioned rooms rebuilt into an open-plan contemporary living and dining hall',
-    beforeImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=80'
+    title: 'Executive Studio & Office Workstation',
+    location: 'Opposite Dilkash Plaza, Lucknow',
+    scope: 'Raw commercial shell transformed into an ergonomic executive office studio with acoustic ceiling and modern task desks',
+    beforeImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80',
+    afterImage: '/images/acme/office-studio-interior.png'
   }
 ];
 
@@ -84,7 +84,7 @@ export const BeforeAfterSection: React.FC = () => {
             Before & After Transformations
           </h2>
           <p className="text-neutral-400 text-xs sm:text-sm font-light">
-            Slide the divider to witness how Style Well DYD reimagines bare brickwork and dated layouts into luxury architectural spaces.
+            Slide the divider to witness how Acme Interiors reimagines bare brickwork and dated layouts into luxury architectural spaces in Lucknow.
           </p>
 
           {/* Room Selector */}
@@ -117,7 +117,7 @@ export const BeforeAfterSection: React.FC = () => {
             onMouseLeave={handleMouseUp}
             onMouseMove={handleMouseMove}
             onTouchMove={handleTouchMove}
-            className="relative aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize border border-white/15 shadow-2xl bg-neutral-900"
+            className="relative aspect-[4/3] sm:aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize border border-white/15 shadow-2xl bg-neutral-900 rounded-lg"
           >
             {/* AFTER Image (Full container background) */}
             <img
@@ -127,8 +127,8 @@ export const BeforeAfterSection: React.FC = () => {
               referrerPolicy="no-referrer"
             />
             {/* After Tag */}
-            <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md px-3 py-1.5 border border-[#c5a059]/40 text-xs font-mono uppercase tracking-wider text-[#c5a059]">
-              After · Style Well DYD
+            <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-md px-3 py-1.5 border border-[#c5a059]/40 text-xs font-mono uppercase tracking-wider text-[#c5a059] rounded">
+              After · Acme Interiors
             </div>
 
             {/* BEFORE Image (Clipped container) */}

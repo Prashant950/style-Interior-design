@@ -30,7 +30,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
             Visit or Contact Our Studio
           </h1>
           <p className="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Drop by for a cup of tea and a detailed physical walkthrough of materials, hardware fittings, and 3D design blueprints along Ne IIM Road, Lucknow.
+            Drop by for a cup of tea and a detailed physical walkthrough of materials, hardware fittings, and 3D design blueprints at Sitapur Rd, opposite Dilkash Plaza, near Vaga Hospital, Aliganj, Lucknow.
           </p>
         </div>
       </section>

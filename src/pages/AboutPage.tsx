@@ -27,10 +27,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <span>Studio Heritage & Philosophy</span>
           </div>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif text-white tracking-tight leading-tight max-w-4xl mx-auto mb-4">
-            About Style Well DYD
+            About {settings.businessName}
           </h1>
           <p className="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto font-light leading-relaxed">
-            {settings.hindiName} — Lucknow's premier turnkey interior architecture studio along Ne IIM Road, specializing in bespoke residential & commercial transformations.
+            {settings.hindiName} — Lucknow's 5.0★ premier turnkey interior design studio in Aliganj (opposite Dilkash Plaza, near Vaga Hospital), specializing in biophilic living rooms, modular kitchens, and commercial transformations.
           </p>
         </div>
       </section>
@@ -55,7 +55,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
               <span>Uncompromised Quality</span>
             </div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight mb-3">
-              Why Lucknow Chooses Style Well DYD
+              Why Lucknow Chooses {settings.businessName}
             </h2>
             <p className="text-neutral-400 text-xs sm:text-sm font-light">
               We bridge the gap between visionary architectural concepts and on-site millimeter-level carpentry precision.

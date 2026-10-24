@@ -29,7 +29,7 @@ export const TransformationsPage: React.FC<TransformationsPageProps> = ({
             Transformations & Site Makeovers
           </h1>
           <p className="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Witness how Style Well DYD reimagines bare concrete structures and dated layouts into architectural masterpieces across Lucknow.
+            Witness how {settings.businessName} reimagines bare concrete structures and dated layouts into architectural masterpieces across Lucknow.
           </p>
         </div>
       </section>

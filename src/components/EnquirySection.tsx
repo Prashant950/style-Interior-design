@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, Phone, MessageCircle, Sparkles } from 'lucide-react';
+import { Send, CheckCircle2, Phone, MessageCircle, Sparkles, AlertCircle } from 'lucide-react';
 import { EnquiryLead } from '../types';
 
 interface EnquirySectionProps {
@@ -17,18 +17,129 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
     email: '',
     projectType: prefilledType || 'Home Interior',
     propertyType: '3BHK Apartment',
-    location: 'Lucknow',
+    location: '',
     approxBudget: '₹10–20 Lakh',
     preferredContact: 'WhatsApp' as 'Phone' | 'WhatsApp' | 'Email',
     message: ''
   });
 
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Comprehensive Field Validator
+  const validateField = (field: string, value: string): string | undefined => {
+    switch (field) {
+      case 'name': {
+        const trimmed = value.trim();
+        if (!trimmed) return 'Full Name is required.';
+        if (trimmed.length < 3) return 'Name must be at least 3 letters.';
+        if (!/^[a-zA-Z\s.'-]+$/.test(trimmed)) return 'Name should contain alphabets only.';
+        if (/^(.)\1{3,}$/i.test(trimmed)) return 'Please enter a genuine name.';
+        return undefined;
+      }
+
+      case 'phone': {
+        const digits = value.replace(/\D/g, '');
+        if (!digits) return 'Mobile phone number is required.';
+        if (digits.length > 0 && !/^[6-9]/.test(digits)) {
+          return 'Indian mobile numbers must start with 6, 7, 8, or 9.';
+        }
+        if (digits.length !== 10) {
+          return `Please enter full 10-digit mobile number (${digits.length}/10 entered).`;
+        }
+        return undefined;
+      }
+
+      case 'email': {
+        const trimmed = value.trim();
+        if (formData.preferredContact === 'Email' && !trimmed) {
+          return 'Email is required when preferred contact is Email.';
+        }
+        if (trimmed && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmed)) {
+          return 'Please enter a valid email address (e.g. name@domain.com).';
+        }
+        return undefined;
+      }
+
+      case 'location': {
+        const trimmed = value.trim();
+        if (!trimmed) return 'Location/Area in Lucknow is required.';
+        if (trimmed.length < 3) return 'Location must be at least 3 characters.';
+        return undefined;
+      }
+
+      case 'projectType': {
+        if (!value.trim()) return 'Please select a project type.';
+        return undefined;
+      }
+
+      case 'approxBudget': {
+        if (!value.trim()) return 'Please select your estimated budget.';
+        return undefined;
+      }
+
+      default:
+        return undefined;
+    }
+  };
+
+  const nameError = (touched.name || attemptedSubmit) ? validateField('name', formData.name) : undefined;
+  const phoneError = (touched.phone || attemptedSubmit) ? validateField('phone', formData.phone) : undefined;
+  const emailError = (touched.email || attemptedSubmit) ? validateField('email', formData.email) : undefined;
+  const locationError = (touched.location || attemptedSubmit) ? validateField('location', formData.location) : undefined;
+  const projectTypeError = (touched.projectType || attemptedSubmit) ? validateField('projectType', formData.projectType) : undefined;
+  const budgetError = (touched.approxBudget || attemptedSubmit) ? validateField('approxBudget', formData.approxBudget) : undefined;
+
+  const hasAnyErrors = Boolean(
+    validateField('name', formData.name) ||
+    validateField('phone', formData.phone) ||
+    validateField('email', formData.email) ||
+    validateField('location', formData.location) ||
+    validateField('projectType', formData.projectType) ||
+    validateField('approxBudget', formData.approxBudget)
+  );
+
+  const handleBlur = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/[^a-zA-Z\s.'-]/g, '');
+    setFormData((prev) => ({ ...prev, name: val }));
+    setTouched((prev) => ({ ...prev, name: true }));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const numericOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setFormData((prev) => ({ ...prev, phone: numericOnly }));
+    setTouched((prev) => ({ ...prev, phone: true }));
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, email: e.target.value }));
+    setTouched((prev) => ({ ...prev, email: true }));
+  };
+
+  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, location: e.target.value }));
+    setTouched((prev) => ({ ...prev, location: true }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
+    setAttemptedSubmit(true);
+    setTouched({
+      name: true,
+      phone: true,
+      email: true,
+      location: true,
+      projectType: true,
+      approxBudget: true
+    });
+
+    if (hasAnyErrors) {
       return;
     }
 
@@ -40,7 +151,7 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
         email: formData.email.trim() || 'Not provided',
         projectType: formData.projectType,
         propertyType: formData.propertyType,
-        location: formData.location.trim() || 'Lucknow',
+        location: formData.location.trim(),
         approxBudget: formData.approxBudget,
         preferredContact: formData.preferredContact,
         message: formData.message.trim() || 'Inquired through web form.'
@@ -96,16 +207,16 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
               <p className="text-neutral-400">Prefer direct communication?</p>
               <div className="mt-2 flex items-center gap-4">
                 <a
-                  href="tel:9506536127"
+                  href="tel:08601050054"
                   className="flex items-center gap-1.5 text-white hover:text-[#c5a059] font-mono"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
-                  <span>95065 36127</span>
+                  <span>086010 50054</span>
                 </a>
                 <span className="text-neutral-600">·</span>
                 <a
-                  href={`https://wa.me/919506536127?text=${encodeURIComponent(
-                    'Hello Style Well DYD, I want to discuss my interior design project.'
+                  href={`https://wa.me/918601050054?text=${encodeURIComponent(
+                    'Hello Acme Interiors, I want to discuss my interior design project in Lucknow.'
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -127,98 +238,205 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                 </div>
                 <h3 className="text-2xl font-serif text-white">Consultation Request Received</h3>
                 <p className="text-xs text-neutral-300 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-[#c5a059]">{formData.name}</strong>. Our senior interior team at Style Well DYD 
+                  Thank you, <strong className="text-[#c5a059]">{formData.name}</strong>. Our senior interior team at Acme Interiors 
                   will contact you via <strong className="text-white">{formData.preferredContact}</strong> within a few hours to discuss your project.
                 </p>
                 <button
                   onClick={() => {
                     setSubmitted(false);
+                    setAttemptedSubmit(false);
+                    setTouched({});
                     setFormData({
                       name: '',
                       phone: '',
                       email: '',
                       projectType: 'Home Interior',
                       propertyType: '3BHK Apartment',
-                      location: 'Lucknow',
+                      location: '',
                       approxBudget: '₹10–20 Lakh',
                       preferredContact: 'WhatsApp',
                       message: ''
                     });
                   }}
-                  className="mt-6 px-6 py-2.5 bg-white/10 text-white text-xs uppercase tracking-wider hover:bg-white/20"
+                  className="mt-6 px-6 py-2.5 bg-white/10 text-white text-xs uppercase tracking-wider hover:bg-white/20 cursor-pointer"
                 >
                   Submit Another Enquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                {/* Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Full Name */}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Your Full Name *
-                    </label>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-xs uppercase tracking-wider text-neutral-300 font-medium">
+                        Your Full Name <span className="text-red-400">*</span>
+                      </label>
+                      {touched.name && !nameError && formData.name.trim().length >= 3 && (
+                        <span className="text-[10px] text-emerald-400 flex items-center gap-0.5">
+                          <CheckCircle2 className="w-3 h-3" /> Valid
+                        </span>
+                      )}
+                    </div>
                     <input
                       type="text"
-                      required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={handleNameChange}
+                      onBlur={() => handleBlur('name')}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full bg-[#181a20] border border-white/15 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#c5a059] transition-colors"
+                      className={`w-full bg-[#181a20] border px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors rounded ${
+                        nameError
+                          ? 'border-red-500 bg-red-950/20 text-white focus:border-red-500 ring-1 ring-red-500/40'
+                          : touched.name && formData.name.trim().length >= 3
+                          ? 'border-emerald-500/60 focus:border-emerald-500'
+                          : 'border-white/15 focus:border-[#c5a059]'
+                      }`}
                     />
+                    {nameError && (
+                      <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1 animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{nameError}</span>
+                      </p>
+                    )}
                   </div>
 
+                  {/* Phone */}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. 95065 36127"
-                      className="w-full bg-[#181a20] border border-white/15 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#c5a059] transition-colors font-mono"
-                    />
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-xs uppercase tracking-wider text-neutral-300 font-medium">
+                        Phone Number <span className="text-red-400">*</span>
+                      </label>
+                      <span className="text-[10px] font-mono text-neutral-400">
+                        {formData.phone.length}/10 digits
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type="tel"
+                        inputMode="numeric"
+                        maxLength={10}
+                        value={formData.phone}
+                        onChange={handlePhoneChange}
+                        onBlur={() => handleBlur('phone')}
+                        placeholder="e.g. 086010 50054"
+                        className={`w-full bg-[#181a20] border px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors font-mono rounded ${
+                          phoneError
+                            ? 'border-red-500 bg-red-950/20 text-white focus:border-red-500 ring-1 ring-red-500/40'
+                            : touched.phone && formData.phone.length === 10
+                            ? 'border-emerald-500/60 focus:border-emerald-500'
+                            : 'border-white/15 focus:border-[#c5a059]'
+                        }`}
+                      />
+                      {touched.phone && !phoneError && formData.phone.length === 10 && (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 absolute right-3 top-3 pointer-events-none" />
+                      )}
+                    </div>
+                    {phoneError ? (
+                      <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1 animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{phoneError}</span>
+                      </p>
+                    ) : (
+                      <p className="text-[10px] text-neutral-500 mt-1">
+                        Enter 10-digit number starting with 6, 7, 8, or 9
+                      </p>
+                    )}
                   </div>
                 </div>
 
+                {/* Email & Location */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Email Address
-                    </label>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-xs uppercase tracking-wider text-neutral-300 font-medium">
+                        Email Address{' '}
+                        {formData.preferredContact === 'Email' ? (
+                          <span className="text-red-400">*</span>
+                        ) : (
+                          <span className="text-neutral-500 text-[10px]">(Optional)</span>
+                        )}
+                      </label>
+                      {touched.email && !emailError && formData.email && (
+                        <span className="text-[10px] text-emerald-400 flex items-center gap-0.5">
+                          <CheckCircle2 className="w-3 h-3" /> Valid
+                        </span>
+                      )}
+                    </div>
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={handleEmailChange}
+                      onBlur={() => handleBlur('email')}
                       placeholder="rahul@example.com"
-                      className="w-full bg-[#181a20] border border-white/15 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#c5a059] transition-colors"
+                      className={`w-full bg-[#181a20] border px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors rounded ${
+                        emailError
+                          ? 'border-red-500 bg-red-950/20 text-white focus:border-red-500 ring-1 ring-red-500/40'
+                          : touched.email && formData.email && !emailError
+                          ? 'border-emerald-500/60 focus:border-emerald-500'
+                          : 'border-white/15 focus:border-[#c5a059]'
+                      }`}
                     />
+                    {emailError && (
+                      <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1 animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{emailError}</span>
+                      </p>
+                    )}
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Location in Lucknow
-                    </label>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-xs uppercase tracking-wider text-neutral-300 font-medium">
+                        Location in Lucknow <span className="text-red-400">*</span>
+                      </label>
+                      {touched.location && !locationError && formData.location.trim().length >= 3 && (
+                        <span className="text-[10px] text-emerald-400 flex items-center gap-0.5">
+                          <CheckCircle2 className="w-3 h-3" /> Valid
+                        </span>
+                      )}
+                    </div>
                     <input
                       type="text"
                       value={formData.location}
-                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                      onChange={handleLocationChange}
+                      onBlur={() => handleBlur('location')}
                       placeholder="e.g. Gomti Nagar, Aliganj, IIM Rd"
-                      className="w-full bg-[#181a20] border border-white/15 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#c5a059] transition-colors"
+                      className={`w-full bg-[#181a20] border px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors rounded ${
+                        locationError
+                          ? 'border-red-500 bg-red-950/20 text-white focus:border-red-500 ring-1 ring-red-500/40'
+                          : touched.location && formData.location.trim().length >= 3
+                          ? 'border-emerald-500/60 focus:border-emerald-500'
+                          : 'border-white/15 focus:border-[#c5a059]'
+                      }`}
                     />
+                    {locationError && (
+                      <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1 animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{locationError}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
+                {/* Project Type, Property Type & Estimated Budget */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Project Type
+                      Project Type <span className="text-red-400">*</span>
                     </label>
                     <select
                       value={formData.projectType}
-                      onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full bg-[#181a20] border border-white/15 px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#c5a059]"
+                      onChange={(e) => {
+                        setFormData({ ...formData, projectType: e.target.value });
+                        setTouched((prev) => ({ ...prev, projectType: true }));
+                      }}
+                      onBlur={() => handleBlur('projectType')}
+                      className={`w-full bg-[#181a20] border px-3 py-2.5 text-xs text-white focus:outline-none rounded ${
+                        projectTypeError
+                          ? 'border-red-500 bg-red-950/20 focus:border-red-500 ring-1 ring-red-500/40'
+                          : 'border-white/15 focus:border-[#c5a059]'
+                      }`}
                     >
                       <option value="Home Interior">Home Interior</option>
                       <option value="Modular Kitchen">Modular Kitchen</option>
@@ -232,16 +450,22 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                       <option value="Renovation">Turnkey Renovation</option>
                       <option value="Other">Other Space</option>
                     </select>
+                    {projectTypeError && (
+                      <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1 animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{projectTypeError}</span>
+                      </p>
+                    )}
                   </div>
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Property Type
+                      Property Type <span className="text-red-400">*</span>
                     </label>
                     <select
                       value={formData.propertyType}
                       onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                      className="w-full bg-[#181a20] border border-white/15 px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#c5a059]"
+                      className="w-full bg-[#181a20] border border-white/15 px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#c5a059] rounded"
                     >
                       <option value="2BHK Apartment">2BHK Apartment</option>
                       <option value="3BHK Apartment">3BHK Apartment</option>
@@ -254,12 +478,20 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                      Estimated Budget
+                      Estimated Budget <span className="text-red-400">*</span>
                     </label>
                     <select
                       value={formData.approxBudget}
-                      onChange={(e) => setFormData({ ...formData, approxBudget: e.target.value })}
-                      className="w-full bg-[#181a20] border border-white/15 px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#c5a059]"
+                      onChange={(e) => {
+                        setFormData({ ...formData, approxBudget: e.target.value });
+                        setTouched((prev) => ({ ...prev, approxBudget: true }));
+                      }}
+                      onBlur={() => handleBlur('approxBudget')}
+                      className={`w-full bg-[#181a20] border px-3 py-2.5 text-xs text-white focus:outline-none rounded ${
+                        budgetError
+                          ? 'border-red-500 bg-red-950/20 focus:border-red-500 ring-1 ring-red-500/40'
+                          : 'border-white/15 focus:border-[#c5a059]'
+                      }`}
                     >
                       <option value="Below ₹1 Lakh">Below ₹1 Lakh</option>
                       <option value="₹1–3 Lakh">₹1–3 Lakh</option>
@@ -268,9 +500,16 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                       <option value="₹10–20 Lakh">₹10–20 Lakh</option>
                       <option value="₹20 Lakh+">₹20 Lakh+</option>
                     </select>
+                    {budgetError && (
+                      <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1 animate-fadeIn">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{budgetError}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
+                {/* Preferred Contact Method */}
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
                     Preferred Contact Method
@@ -280,10 +519,15 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                       <button
                         type="button"
                         key={method}
-                        onClick={() => setFormData({ ...formData, preferredContact: method })}
-                        className={`py-2 text-xs font-medium uppercase tracking-wider border cursor-pointer ${
+                        onClick={() => {
+                          setFormData({ ...formData, preferredContact: method });
+                          if (method === 'Email') {
+                            setTouched((prev) => ({ ...prev, email: true }));
+                          }
+                        }}
+                        className={`py-2 text-xs font-medium uppercase tracking-wider border cursor-pointer transition-colors ${
                           formData.preferredContact === method
-                            ? 'bg-[#c5a059] text-black border-[#c5a059]'
+                            ? 'bg-[#c5a059] text-black border-[#c5a059] font-bold'
                             : 'bg-[#181a20] text-neutral-400 border-white/10 hover:text-white'
                         }`}
                       >
@@ -293,18 +537,27 @@ export const EnquirySection: React.FC<EnquirySectionProps> = ({
                   </div>
                 </div>
 
+                {/* Requirements / Message */}
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-1.5 font-medium">
-                    Project Requirements or Specific Ideas
+                    Project Requirements or Specific Ideas <span className="text-neutral-500 text-[10px]">(Optional)</span>
                   </label>
                   <textarea
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us about your room dimensions, move-in target date, design ideas, or specific material preferences..."
-                    className="w-full bg-[#181a20] border border-white/15 p-3 text-xs text-white focus:outline-none focus:border-[#c5a059]"
+                    className="w-full bg-[#181a20] border border-white/15 p-3 text-xs text-white focus:outline-none focus:border-[#c5a059] rounded"
                   ></textarea>
                 </div>
+
+                {/* Submit Error Summary Banner */}
+                {attemptedSubmit && hasAnyErrors && (
+                  <div className="p-3 bg-red-950/40 border border-red-500/60 rounded flex items-start gap-2 text-xs text-red-300">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <span>Please correct the highlighted fields above before submitting.</span>
+                  </div>
+                )}
 
                 <button
                   type="submit"

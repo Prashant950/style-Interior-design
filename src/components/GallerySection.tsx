@@ -10,7 +10,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ gallery }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ['All', 'Living Room', 'Kitchen', 'Bedroom', 'Office', 'Luxury'];
+  const categories = ['All', 'Living Room', 'Kitchen', 'Bedroom', 'Office', 'Ceiling', 'Luxury'];
 
   const filteredItems =
     selectedCategory === 'All'
@@ -90,7 +90,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ gallery }) => {
                 src={item.imageUrl}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-40 group-hover:opacity-90 transition-opacity" />
 

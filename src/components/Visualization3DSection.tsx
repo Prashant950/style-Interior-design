@@ -68,7 +68,7 @@ export const Visualization3DSection: React.FC<Visualization3DSectionProps> = ({
             </h2>
 
             <p className="text-neutral-300 text-sm leading-relaxed">
-              Gone are the days of guesswork and costly on-site demolition. With Style Well DYD, you experience millimeter-accurate 
+              Gone are the days of guesswork and costly on-site demolition. With Acme Interiors, you experience millimeter-accurate 
               3D photorealistic renderings of your Lucknow property.
             </p>
 
